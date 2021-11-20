@@ -19,7 +19,6 @@ class UserInformationActivity : AppCompatActivity() {
     lateinit var userViewModel: UserViewModel
     lateinit var context: Context
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_information)

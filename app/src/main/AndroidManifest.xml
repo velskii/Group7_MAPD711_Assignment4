@@ -16,9 +16,6 @@
             android:name=".UpdateUserActivity"
             android:exported="false" />
         <activity
-            android:name=".PersonalInfomationActivity"
-            android:exported="false" />
-        <activity
             android:name=".SummaryActivity"
             android:exported="false" />
         <activity
@@ -40,13 +37,11 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

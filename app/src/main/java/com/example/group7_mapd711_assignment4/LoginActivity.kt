@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -67,6 +68,12 @@ class LoginActivity : AppCompatActivity() {
                 })
 
             }
+        }
+
+        val linkRegister: Button = findViewById(R.id.linkRegister) as Button
+        linkRegister.setOnClickListener{
+            val i = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(i)
         }
 
     }

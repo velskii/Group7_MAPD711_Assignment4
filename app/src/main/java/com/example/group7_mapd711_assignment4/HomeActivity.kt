@@ -1,5 +1,6 @@
 package com.example.group7_mapd711_assignment4
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,9 +15,8 @@ import com.example.group7_mapd711_assignment4.User.UserViewModel
 class HomeActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var userViewModel: UserViewModel
-    lateinit var context: Context
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -34,16 +34,10 @@ class HomeActivity : AppCompatActivity() {
         }
 
         sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
-        context = this@HomeActivity
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        val userId = sharedPreferences.getInt("user_id", 0)
         val username = sharedPreferences.getString("username", "no name")
-        val password = sharedPreferences.getString("password", "no psw")
 
-        findViewById<TextView>(R.id.tvOutputName).text = username
-        findViewById<TextView>(R.id.tvOutputCourse).text = password
-        findViewById<TextView>(R.id.userId).text = userId.toString()
+        findViewById<TextView>(R.id.welcome).text = "$username Welcome! Please enjoy your trip."
 
     }
 
