@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.example.group7_mapd711_assignment4.User.UserViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +32,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun btnBook_clicked(v:View) {
+        val i = Intent(this@MainActivity, CruiseTypesActivity::class.java)
+        startActivity(i);
     }
 }

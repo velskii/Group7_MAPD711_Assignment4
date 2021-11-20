@@ -1,10 +1,7 @@
-package com.example.group7_mapd711_assignment4
+package com.example.group7_mapd711_assignment4.User
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 
 class UserRepository {
 

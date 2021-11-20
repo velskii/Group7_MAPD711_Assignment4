@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.group7_mapd711_assignment4.User.UserViewModel
 
 class LoginActivity : AppCompatActivity() {
 

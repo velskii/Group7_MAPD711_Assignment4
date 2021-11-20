@@ -1,4 +1,4 @@
-package com.example.group7_mapd711_assignment4
+package com.example.group7_mapd711_assignment4.User
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,4 +1,4 @@
-package com.example.group7_mapd711_assignment4
+package com.example.group7_mapd711_assignment4.User
 
 import android.content.Context
 import androidx.lifecycle.LiveData

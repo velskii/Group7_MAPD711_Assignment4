@@ -4,11 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.group7_mapd711_assignment4.User.UserViewModel
 
 class HomeActivity : AppCompatActivity() {
 

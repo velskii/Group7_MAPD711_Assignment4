@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.group7_mapd711_assignment4.User.UserViewModel
 import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {

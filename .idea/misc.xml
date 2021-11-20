@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_cruise_types.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_bahamas.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_caribbean.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_cuba.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_sampler.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_star.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>

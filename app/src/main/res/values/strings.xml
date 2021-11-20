@@ -6,4 +6,50 @@
     <string name="intro">Register or login to start using the system.</string>
 
     <string name="agreement">Agree with the Terms of Service and Privacy policy</string>
+
+
+    <string name="bahamas">Bahamas Cruise</string>
+    <string name="caribbean">Caribbean Cruise</string>
+    <string name="cuba">Cuba Cruise</string>
+    <string name="sampler">Sampler Cruise</string>
+    <string name="star">Star Cruise</string>
+
+
+    <string name="visiting_places">Visiting places:</string>
+    <string name="cruise_price">Cruise price:</string>
+    <string name="duration">duration(number of nights):</string>
+    <string name="image">image</string>
+
+    <string name="visiting_places_bahamas">Visiting places: Atlantis Paradise Island</string>
+    <string name="cruise_price_bahamas">Price: 6666$</string>
+    <string name="duration_bahamas">Duration (number of nights): 6</string>
+
+    <string name="visiting_places_caribbean">Visiting places: Caribbean</string>
+    <string name="cruise_price_caribbean">Price: 777$</string>
+    <string name="duration_caribbean">Duration (number of nights): 7</string>
+
+    <string name="visiting_places_cuba">Visiting places: Cuba</string>
+    <string name="cruise_price_cuba">Price: 8888$</string>
+    <string name="duration_cuba">Duration (number of nights): 8</string>
+
+    <string name="visiting_places_sampler">Visiting places: Sampler</string>
+    <string name="cruise_price_sampler">Price: 9999$</string>
+    <string name="duration_sampler">Duration (number of nights): 9</string>
+
+    <string name="visiting_places_star">Visiting places: Star</string>
+    <string name="cruise_price_star">Price: 5555$</string>
+    <string name="duration_star">Duration (number of nights): 5</string>
+
+    <string name="adults_number">Number of adults:</string>
+    <string name="children_number">Number of children:</string>
+
+    <string name="group_information">Is anyone travelling over the age of 60?</string>
+
+    <string name="small_description">Finding the right cruise deal that is right for you is our goal. Search by the river you are interested in and then filter down by when you want to go. Make sure to look through our current offers and deals and select the ones you are interested in...it’s that easy.</string>
+    <string name="checkbox_text">Please select the checkbox and continue to next screen</string>
+    <string name="member_description">Please select the number of adults and children</string>
+    <string name="btn_submit">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

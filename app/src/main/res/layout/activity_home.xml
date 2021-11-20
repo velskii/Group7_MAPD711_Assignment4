@@ -4,10 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="5dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgLogo"
+        android:maxWidth="100dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/cruise_logo" />
 
+    <TextView
+        style="@style/small_description_style"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
+        android:layout_marginRight="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/small_description"
+        />
+    <Button
+        android:onClick="btnBook_clicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book a Cruise"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,5 +56,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         />
+
 
 </LinearLayout>
