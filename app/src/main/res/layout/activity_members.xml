@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5pt"
     tools:context=".MembersActivity">
+    <TextView
+        android:layout_marginBottom="20px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titleFontSize"
+        android:text="@string/member_description" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adults_number"
+        android:textSize="@dimen/descriptionFontSize"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/adults_spinner"
+        android:tooltipText="number of adults"
+        android:entries="@array/adults_number"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/children_number"
+        android:textSize="@dimen/descriptionFontSize"/>
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/children_spinner"
+        android:tooltipText="number of children"
+        android:entries="@array/children_number"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/group_information"
+        android:textSize="@dimen/descriptionFontSize"/>
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:tooltipText="@string/group_information"
+        android:id="@+id/rd_group">
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="YES"
+            android:id="@+id/rdb1"/>
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:text="NO"
+            android:id="@+id/rdb2"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/members_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="summary_info"
+        android:textSize="@dimen/titleFontSize"
+        android:text="@string/btn_submit"/>
+
+</LinearLayout>

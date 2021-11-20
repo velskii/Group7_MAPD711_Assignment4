@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group7_MAPD711_Assignment4">
         <activity
+            android:name=".SummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PayOptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".MembersActivity"
             android:exported="false" />
         <activity

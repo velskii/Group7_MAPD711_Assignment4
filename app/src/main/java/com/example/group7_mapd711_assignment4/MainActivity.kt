@@ -34,8 +34,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun btnBook_clicked(v:View) {
-        val i = Intent(this@MainActivity, CruiseTypesActivity::class.java)
-        startActivity(i);
-    }
+
 }
