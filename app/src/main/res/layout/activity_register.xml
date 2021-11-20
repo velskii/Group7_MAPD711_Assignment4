@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TableRow>
+        <TextView
+            android:text="User Name:"
+            android:width="120dp" />
+        <EditText
+            android:id="@+id/username_register"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="password:"
+            android:width="120dp" />
+        <EditText
+            android:id="@+id/password_register"
+            android:password="true"
+            android:width="200dp"
+            tools:ignore="Deprecated" />
+    </TableRow>
+
+
+    <TableRow>
+        <TextView
+            android:text="Repeat your password:"
+            android:width="120dp" />
+        <EditText
+            android:id="@+id/repeat_password_register"
+            android:password="true"
+            android:width="200dp"
+            tools:ignore="Deprecated" />
+    </TableRow>
+
+    <TableRow>
+        <TextView />
+        <CheckBox
+            android:id="@+id/remember_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/agreement"
+            />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:id="@+id/btnRegister"
+            android:text="Register"
+            />
+    </TableRow>
+
+</TableLayout>

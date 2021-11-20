@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Group7_MAPD711_Assignment4</string>
+    <string name="original_app_name">Group7_MAPD711_Assignment4</string>
+
+    <string name="app_name">Luxury cruise ship</string>
+
+    <string name="intro">Register or login to start using the system.</string>
+
+    <string name="agreement">Agree with the Terms of Service and Privacy policy</string>
 </resources>
