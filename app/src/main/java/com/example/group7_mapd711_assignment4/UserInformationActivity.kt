@@ -57,6 +57,7 @@ class UserInformationActivity : AppCompatActivity() {
             val i = Intent(this@UserInformationActivity, UpdateUserActivity::class.java)
             startActivity(i);
         }
+
         val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
         btnBackHome.setOnClickListener{
             val i = Intent(this@UserInformationActivity, HomeActivity::class.java)

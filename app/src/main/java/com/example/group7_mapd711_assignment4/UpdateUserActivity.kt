@@ -82,12 +82,12 @@ class UpdateUserActivity : AppCompatActivity() {
             } else {
                 Toast.makeText( context,"Please fill in the empty fields.", Toast.LENGTH_LONG).show()
             }
+        }
 
-            val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
-            btnBackHome.setOnClickListener{
-                val i = Intent(this@UpdateUserActivity, HomeActivity::class.java)
-                startActivity(i);
-            }
+        val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
+        btnBackHome.setOnClickListener{
+            val i = Intent(this@UpdateUserActivity, HomeActivity::class.java)
+            startActivity(i);
         }
 
     }
