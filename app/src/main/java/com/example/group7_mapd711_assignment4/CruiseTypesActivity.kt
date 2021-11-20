@@ -12,6 +12,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.group7_mapd711_assignment4.Fragments.*
 
 class CruiseTypesActivity : AppCompatActivity() {
 

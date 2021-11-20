@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CaribbeanFragment">
+    tools:context=".Fragments.CaribbeanFragment">
     <LinearLayout
         android:layout_marginLeft="30px"
         android:layout_marginRight="30px"
