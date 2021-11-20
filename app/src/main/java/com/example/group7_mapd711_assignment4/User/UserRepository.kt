@@ -2,6 +2,9 @@ package com.example.group7_mapd711_assignment4.User
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class UserRepository {
 
@@ -21,6 +24,13 @@ class UserRepository {
             userId = userDatabase!!.UserDao().insert(userDetails)
 //            }
             return userId
+        }
+        fun updateUser(context: Context, id: Int, username: String, password: String, firstname: String, lastname: String, address: String, city: String, postalcode: String, telephone: String, email: String) {
+            userDatabase = initializeDB(context)
+            CoroutineScope(IO).launch {
+//                val userDetails = UserModel(username, password, firstname, lastname, address, city, postalcode, telephone, email)
+                userDatabase!!.UserDao().updateUser(id, username, password, firstname, lastname, address, city, postalcode, telephone, email)
+            }
         }
 
         fun getUsersByUsernameAndPassword(context: Context, username: String, password: String) : LiveData<UserModel>? {

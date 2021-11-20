@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group7_MAPD711_Assignment4">
         <activity
+            android:name=".UserInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PersonalInfomationActivity"
+            android:exported="false" />
+        <activity
             android:name=".SummaryActivity"
             android:exported="false" />
         <activity

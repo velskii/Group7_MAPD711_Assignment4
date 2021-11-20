@@ -18,6 +18,9 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(userModel: UserModel) : Long
 
+    @Query("UPDATE user SET username=:username, password=:password, firstname=:firstname, lastname=:lastname, address=:address, city=:city, postalcode=:postalcode, telephone=:telephone, email=:email WHERE id = :id")
+    suspend fun updateUser(id: Int, username: String, password: String, firstname: String, lastname: String, address: String, city: String, postalcode: String, telephone: String, email: String)
+
     @Query("DELETE FROM user")
     suspend fun deleteAll()
 }

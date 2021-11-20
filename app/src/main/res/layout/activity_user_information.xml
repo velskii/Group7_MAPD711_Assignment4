@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TableRow>
+        <TextView
+            android:text="User Name:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/username_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="password:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/password_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="firstname:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/firstname_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="lastname:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/lastname_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="address:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/address_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="city:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/city_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="postalCode:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/postal_code_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="telephone:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/telephone_show"
+            android:width="200dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="email:"
+            android:width="120dp" />
+        <TextView
+            android:id="@+id/email_show"
+            android:width="200dp"/>
+    </TableRow>
+
+
+    <TableRow>
+        <Button
+            android:id="@+id/btnChange"
+            android:layout_gravity="center_horizontal"
+            android:text="Change"
+            />
+        <Button
+            android:id="@+id/btnBackHome"
+            android:layout_gravity="center_horizontal"
+            android:text="Home"
+            />
+    </TableRow>
+
+
+</TableLayout>

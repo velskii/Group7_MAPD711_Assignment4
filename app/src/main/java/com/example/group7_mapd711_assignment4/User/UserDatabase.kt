@@ -3,7 +3,7 @@ package com.example.group7_mapd711_assignment4.User
 import android.content.Context
 import androidx.room.*
 
-@Database(entities = arrayOf(UserModel::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(UserModel::class), version = 2, exportSchema = false)
 
 public abstract class UserDatabase: RoomDatabase() {
 

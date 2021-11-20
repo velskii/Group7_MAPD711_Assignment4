@@ -19,6 +19,10 @@ class UserViewModel : ViewModel() {
         return liveDataUser
     }
 
+    fun updateUser(context: Context, id: Int, username: String, password: String, firstname: String, lastname: String, address: String, city: String, postalcode: String, telephone: String, email: String) {
+        UserRepository.updateUser(context, id, username, password, firstname, lastname, address, city, postalcode, telephone, email)
+    }
+
     fun getUsersById(context: Context, id: Int) : LiveData<UserModel>? {
         liveDataUser = UserRepository.getUsersById(context, id)
         return liveDataUser
