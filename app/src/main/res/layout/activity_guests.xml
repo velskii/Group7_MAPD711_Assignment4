@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5pt"
-    tools:context=".MembersActivity">
+    tools:context=".GuestsActivity">
     <TextView
         android:layout_marginBottom="20px"
         android:layout_width="wrap_content"

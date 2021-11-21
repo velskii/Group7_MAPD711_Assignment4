@@ -21,6 +21,7 @@ class BookingRepository {
     companion object {
         var bookingDatabase: BookingDatabase? = null
         var bookingModel: LiveData<BookingModel>? = null
+        var bookingId: Long = 0
 
         //initialize database
         fun initializeDB(context: Context) : BookingDatabase {
@@ -28,14 +29,15 @@ class BookingRepository {
         }
 
         //Initialize insertStudent()
-        fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
-                          numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int, amoutPaid: Double, startDate: String) {
+        suspend fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
+                          numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int, amoutPaid: Double, startDate: String): Long {
             bookingDatabase = initializeDB(context)
 
-            CoroutineScope(IO).launch {
+//            CoroutineScope(IO).launch {
                 val studentDetails = BookingModel(customerId, cruiseCode, numberOfAdults, numberOfKids, numberOfSeniors, amoutPaid, startDate)
-                bookingDatabase!!.bookingDao().insertBooking(studentDetails)
-            }
+                bookingId = bookingDatabase!!.bookingDao().insertBooking(studentDetails)
+                return bookingId
+//            }
 
         }
 

@@ -20,25 +20,30 @@
     <string name="duration">duration(number of nights):</string>
     <string name="image">image</string>
 
-    <string name="visiting_places_bahamas">Visiting places: Atlantis Paradise Island</string>
-    <string name="cruise_price_bahamas">Price: 6666$</string>
-    <string name="duration_bahamas">Duration (number of nights): 6</string>
+    <string name="place_prefix">Visiting places: </string>
+    <string name="price_prefix">Price: </string>
+    <string name="price_suffix">$</string>
+    <string name="duration_prefix">Duration (number of nights): </string>
 
-    <string name="visiting_places_caribbean">Visiting places: Caribbean</string>
-    <string name="cruise_price_caribbean">Price: 777$</string>
-    <string name="duration_caribbean">Duration (number of nights): 7</string>
+    <string name="visiting_places_bahamas">Atlantis Paradise Island</string>
+    <string name="cruise_price_bahamas">6666</string>
+    <string name="duration_bahamas">6</string>
 
-    <string name="visiting_places_cuba">Visiting places: Cuba</string>
-    <string name="cruise_price_cuba">Price: 8888$</string>
-    <string name="duration_cuba">Duration (number of nights): 8</string>
+    <string name="visiting_places_caribbean">Caribbean</string>
+    <string name="cruise_price_caribbean">777</string>
+    <string name="duration_caribbean">7</string>
 
-    <string name="visiting_places_sampler">Visiting places: Sampler</string>
-    <string name="cruise_price_sampler">Price: 9999$</string>
-    <string name="duration_sampler">Duration (number of nights): 9</string>
+    <string name="visiting_places_cuba">Cuba</string>
+    <string name="cruise_price_cuba">8888</string>
+    <string name="duration_cuba">8</string>
 
-    <string name="visiting_places_star">Visiting places: Star</string>
-    <string name="cruise_price_star">Price: 5555$</string>
-    <string name="duration_star">Duration (number of nights): 5</string>
+    <string name="visiting_places_sampler">Sampler</string>
+    <string name="cruise_price_sampler">9999</string>
+    <string name="duration_sampler">9</string>
+
+    <string name="visiting_places_star">Star</string>
+    <string name="cruise_price_star">5555</string>
+    <string name="duration_star">5</string>
 
     <string name="adults_number">Number of adults:</string>
     <string name="children_number">Number of children:</string>

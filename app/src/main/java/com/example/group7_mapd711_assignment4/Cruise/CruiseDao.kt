@@ -21,9 +21,13 @@ interface CruiseDao {
 
     //defining an insert method using @Insert Annotation
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCruise(cruiseModel: CruiseModel)
+    fun insertCruise(cruiseModel: CruiseModel): Long
 
     //defining a query method using @Query Annotation
     @Query("SELECT * FROM cruise WHERE CruiseName =:cruiseName")
     fun getCruise(cruiseName: String?) : LiveData<CruiseModel>
+
+    @Query("SELECT * FROM cruise WHERE id =:id")
+    fun getCruiseById(id: Int?) : LiveData<CruiseModel>
+
 }

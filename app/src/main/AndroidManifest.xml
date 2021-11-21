@@ -28,7 +28,7 @@
             android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".MembersActivity"
+            android:name=".GuestsActivity"
             android:exported="false" />
         <activity
             android:name=".CruiseTypesActivity"
@@ -41,8 +41,8 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
