@@ -6,10 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.Booking.BookingModel
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
@@ -58,6 +55,12 @@ class BookingListActivity : AppCompatActivity() {
 //                    "Position :$position\nItem Value : $z", Toast.LENGTH_LONG)
 //                    .show()
             }
+        }
+
+        val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
+        btnBackHome.setOnClickListener{
+            val i = Intent(this@BookingListActivity, HomeActivity::class.java)
+            startActivity(i);
         }
 
     }
