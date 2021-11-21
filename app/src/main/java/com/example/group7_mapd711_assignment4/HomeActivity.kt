@@ -9,11 +9,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.group7_mapd711_assignment4.User.UserViewModel
+import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
 
 class HomeActivity : AppCompatActivity() {
-
+    lateinit var bookingViewModel: BookingViewModel
+    lateinit var context: Context
     lateinit var sharedPreferences: SharedPreferences
 
     @SuppressLint("SetTextI18n")
@@ -30,6 +32,12 @@ class HomeActivity : AppCompatActivity() {
         val linkBooking: Button = findViewById<View>(R.id.btnBooking) as Button
         linkBooking.setOnClickListener{
             val i = Intent(this@HomeActivity, CruiseTypesActivity::class.java)
+            startActivity(i);
+        }
+
+        val bookingInformation: Button = findViewById<View>(R.id.btnBookingInfo) as Button
+        bookingInformation.setOnClickListener{
+            val i = Intent(this@HomeActivity, BookingInformationActivity::class.java)
             startActivity(i);
         }
 

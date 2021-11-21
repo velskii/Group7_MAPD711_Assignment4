@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="normalFontSize">10pt</dimen>
-    <dimen name="titleFontSize">10pt</dimen>
+    <dimen name="titleFontSize">5pt</dimen>
     <dimen name="descriptionFontSize">12pt</dimen>
 
     <dimen name="important_text">13pt</dimen>
