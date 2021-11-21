@@ -57,7 +57,7 @@ class CruiseTypesActivity : AppCompatActivity() {
                 ).apply()
             }
 //            Toast.makeText(this,"name:${cruiseTypeChecked},visiting_places:${visiting_places},duration:${price},price:${price},",Toast.LENGTH_LONG).show()
-            val i = Intent(this@CruiseTypesActivity, MembersActivity::class.java)
+            val i = Intent(this@CruiseTypesActivity, GuestsActivity::class.java)
             startActivity(i)
         } else {
             Toast.makeText(this,"Please select one cruise type",Toast.LENGTH_LONG).show()

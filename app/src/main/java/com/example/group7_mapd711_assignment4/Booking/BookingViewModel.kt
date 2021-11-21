@@ -19,12 +19,14 @@ class BookingViewModel : ViewModel() {
     // calling repository tasks and
     // sending the results to the Activity
     var liveDataBooking: LiveData<BookingModel>? = null
+    var bookingId: Long = 0
 
     //
-    fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
+    suspend fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
                       numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int, amoutPaid: Double, startDate: String
-    ) {
-        BookingRepository.insertBooking(context, customerId, cruiseCode, numberOfAdults, numberOfKids, numberOfSeniors, amoutPaid, startDate)
+    ): Long {
+        bookingId = BookingRepository.insertBooking(context, customerId, cruiseCode, numberOfAdults, numberOfKids, numberOfSeniors, amoutPaid, startDate)
+        return bookingId
     }
 
     fun getBooking(context: Context, customerId: Int) : LiveData<BookingModel>? {

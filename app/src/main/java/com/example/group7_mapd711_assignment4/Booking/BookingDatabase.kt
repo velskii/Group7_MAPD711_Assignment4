@@ -33,6 +33,7 @@ abstract class BookingDatabase : RoomDatabase() {
                 INSTANCE = Room
                     .databaseBuilder(context, BookingDatabase::class.java, "BOOKINGDB")
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build()
 
                 return INSTANCE!!

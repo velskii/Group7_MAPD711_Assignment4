@@ -28,7 +28,7 @@
             android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".MembersActivity"
+            android:name=".GuestsActivity"
             android:exported="false" />
         <activity
             android:name=".CruiseTypesActivity"
