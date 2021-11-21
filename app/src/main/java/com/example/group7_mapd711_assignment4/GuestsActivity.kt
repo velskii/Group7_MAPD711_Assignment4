@@ -53,15 +53,11 @@ class GuestsActivity : AppCompatActivity() {
 //            Toast.makeText( context,"bookingId:${findViewById<TextView>(R.id.amountPay).text.toString().toDouble()}", Toast.LENGTH_SHORT).show()
             val numberOfAdults = findViewById<Spinner>(R.id.adults_spinner).selectedView as TextView
             val numberOfChildren = findViewById<Spinner>(R.id.children_spinner).selectedView as TextView
-            val seniorGuest = findViewById<RadioButton>(findViewById<RadioGroup>(R.id.rd_group).checkedRadioButtonId).text.toString()
+            val numberOfSenior = findViewById<Spinner>(R.id.senior_spinner).selectedView as TextView
+
+//            val seniorGuest = findViewById<RadioButton>(findViewById<RadioGroup>(R.id.rd_group).checkedRadioButtonId).text.toString()
             val startDate = findViewById<TextView>(R.id.dateDisplay).text.toString()
 
-            var seniorGuestIf: Int = 0
-            if (seniorGuest == "YES") {
-                seniorGuestIf = 1
-            } else {
-                seniorGuestIf = 0
-            }
 
             lifecycleScope.launch{
                 var booking_id = bookingViewModel.insertBooking(
@@ -70,7 +66,7 @@ class GuestsActivity : AppCompatActivity() {
                     cruiseCode = cruiseId.toString(),
                     numberOfAdults = numberOfAdults.text.toString().toInt(),
                     numberOfKids = numberOfChildren.text.toString().toInt(),
-                    numberOfSeniors = seniorGuestIf,
+                    numberOfSeniors = numberOfSenior.text.toString().toInt(),
                     amoutPaid = findViewById<TextView>(R.id.amountPay).text.toString().toDouble(),
                     startDate = startDate,
                     )

@@ -33,26 +33,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/group_information"
+        android:text="@string/number_of_seniors"
         android:textSize="@dimen/descriptionFontSize"/>
-    <RadioGroup
-        android:orientation="horizontal"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:tooltipText="@string/group_information"
-        android:id="@+id/rd_group">
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="YES"
-            android:id="@+id/rdb1"/>
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:checked="true"
-            android:text="NO"
-            android:id="@+id/rdb2"/>
-    </RadioGroup>
+        android:id="@+id/senior_spinner"
+        android:tooltipText="number of senior"
+        android:entries="@array/senior_number"/>
 
     <TextView
         android:layout_width="wrap_content"

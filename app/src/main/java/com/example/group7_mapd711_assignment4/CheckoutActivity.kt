@@ -50,8 +50,8 @@ class CheckoutActivity : AppCompatActivity() {
         bookingViewModel.getBookingById(this@CheckoutActivity, booking_id.toInt())?.observe(this, {
 
             findViewById<TextView>(R.id.number_adults).text = "Number of adults: "+ it.NumberOfAdults.toString()
-            findViewById<TextView>(R.id.number_children).text = "Number of children:" + it.NumberOfKids.toString()
-            findViewById<TextView>(R.id.senior_guest).text = "Anyone over the age of 60:" + it.NumberOfSeniors.toString()
+            findViewById<TextView>(R.id.number_children).text = "Number of children: " + it.NumberOfKids.toString()
+            findViewById<TextView>(R.id.senior_guest).text = "Number of senior: " + it.NumberOfSeniors.toString()
 
         })
 //        Toast.makeText( this@CheckoutActivity,"info:${it.CruiseCode}", Toast.LENGTH_SHORT).show()
