@@ -18,7 +18,7 @@ class BookingInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking_information)
 
-        sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@BookingInformationActivity
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
 

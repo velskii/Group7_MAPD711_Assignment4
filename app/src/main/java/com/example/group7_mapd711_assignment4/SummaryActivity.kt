@@ -13,7 +13,7 @@ class SummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary)
 
-        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment2", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
 
         val cruise_type_checked = sharedPreferences.getString("cruise_type_checked", "").toString()
         val city_and_country = sharedPreferences.getString("city", "").toString() + "-" + sharedPreferences.getString("country", "").toString()

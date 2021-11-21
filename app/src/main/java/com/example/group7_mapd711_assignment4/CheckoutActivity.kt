@@ -24,7 +24,7 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checkout)
 
         cruiseViewModel = ViewModelProvider(this).get(CruiseViewModel::class.java)
-        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment2", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
 
         val cruiseId = sharedPreferences.getLong("cruise_id", 0)
         cruiseViewModel.getCruiseById(this@CheckoutActivity, cruiseId.toInt())?.observe(this, {

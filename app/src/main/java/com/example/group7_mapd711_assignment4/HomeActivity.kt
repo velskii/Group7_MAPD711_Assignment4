@@ -42,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
             //Toast.makeText( context,"Ok!!!", Toast.LENGTH_LONG).show()
         }
 
-        sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
 
         val username = sharedPreferences.getString("username", "no name")
 

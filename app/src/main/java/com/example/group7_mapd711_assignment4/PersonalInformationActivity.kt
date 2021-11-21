@@ -21,7 +21,7 @@ class PersonalInformationActivity : AppCompatActivity() {
 
     fun job_done(v:View){
         var errorInfo : String = ""
-        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment2", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
 
         val full_name = findViewById<EditText>(R.id.full_name).text.toString()
         val address = findViewById<EditText>(R.id.address).text.toString()

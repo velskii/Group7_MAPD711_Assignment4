@@ -23,7 +23,7 @@ class UserInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_information)
 
-        sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@UserInformationActivity
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 

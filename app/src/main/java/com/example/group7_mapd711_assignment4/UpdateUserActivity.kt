@@ -24,7 +24,7 @@ class UpdateUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_user)
 
-        sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@UpdateUserActivity
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 

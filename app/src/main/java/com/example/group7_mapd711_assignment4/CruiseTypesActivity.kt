@@ -30,7 +30,7 @@ class CruiseTypesActivity : AppCompatActivity() {
     }
 
     fun cruiseTypeChecked(v:View) {
-        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment2", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@CruiseTypesActivity
         cruiseViewModel = ViewModelProvider(this).get(CruiseViewModel::class.java)
 
