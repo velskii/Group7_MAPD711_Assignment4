@@ -1,87 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5pt"
     android:stretchColumns="1"
     tools:context=".RegisterActivity">
 
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginBottom="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titleFontSize"
+        android:text="Register" />
 
-    <TableRow
-        android:paddingTop="60dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="User Name:"
-            android:padding="3dip"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <EditText
             android:id="@+id/username_register"
-            android:padding="3dip"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="password:"
-            android:padding="3dip"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <EditText
             android:id="@+id/password_register"
-            android:padding="3dip"
             android:password="true"
-            android:width="200dp"
-            tools:ignore="Deprecated" />
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
 
-
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Repeat password:"
-            android:padding="3dip"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <EditText
             android:id="@+id/repeat_password_register"
-            android:padding="3dip"
             android:password="true"
-            android:width="200dp"
-            tools:ignore="Deprecated" />
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
 
-    <TableRow>
-        <TextView />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <CheckBox
-            android:id="@+id/remember_psw"
-            android:padding="3dip"
+            android:id="@+id/aggrement_psw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/agreement"
             />
-    </TableRow>
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <Button
+            android:layout_gravity="center"
             android:id="@+id/btnRegister"
-            android:padding="3dip"
-            android:layout_gravity="center"
-            android:text="Register"
-            />
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Register"/>
+    </LinearLayout>
 
-    <TableRow>
-        <TextView />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
-            android:padding="3dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="Login if you already have an account."
-            />
-    </TableRow>
+            android:textSize="18sp" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <Button
-            android:id="@+id/linkLogin"
-            android:padding="3dip"
             android:layout_gravity="center"
-            android:text="Login"
-            />
-    </TableRow>
+            android:id="@+id/linkLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Login"/>
+    </LinearLayout>
 
-</TableLayout>
+</LinearLayout>

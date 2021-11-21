@@ -48,6 +48,9 @@
     <string name="adults_number">Number of adults:</string>
     <string name="children_number">Number of children:</string>
 
+    <string name="profile_information">Profile Information</string>
+    <string name="update_profile_information">Update Profile Information</string>
+
     <string name="group_information">Is anyone travelling over the age of 60?</string>
 
     <string name="small_description">Finding the right cruise deal that is right for you is our goal. Search by the river you are interested in and then filter down by when you want to go. Make sure to look through our current offers and deals and select the ones you are interested in...it’s that easy.</string>

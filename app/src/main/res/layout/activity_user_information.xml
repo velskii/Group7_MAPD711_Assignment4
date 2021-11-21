@@ -1,105 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5pt"
     tools:context=".LoginActivity">
 
-    <TableRow>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginBottom="20px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titleFontSize"
+        android:text="@string/profile_information" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="User Name:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/username_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="password:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/password_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="firstname:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/firstname_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="lastname:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/lastname_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="address:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/address_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="city:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/city_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="postalCode:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/postal_code_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="telephone:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/telephone_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="email:"
-            android:width="120dp" />
+            android:textStyle="bold"
+            android:textSize="16sp" />
         <TextView
             android:id="@+id/email_show"
-            android:width="200dp"/>
-    </TableRow>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10" />
+    </LinearLayout>
 
-
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
         <Button
+            android:layout_gravity="center"
             android:id="@+id/btnChange"
-            android:layout_gravity="center_horizontal"
-            android:text="Change"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Update"/>
         <Button
+            android:layout_marginLeft="20px"
             android:id="@+id/btnBackHome"
-            android:layout_gravity="center_horizontal"
-            android:text="Home"
-            />
-    </TableRow>
-
-
-</TableLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Home"/>
+    </LinearLayout>
+</LinearLayout>
