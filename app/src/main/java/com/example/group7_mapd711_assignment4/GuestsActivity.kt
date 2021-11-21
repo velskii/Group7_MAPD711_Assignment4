@@ -44,26 +44,26 @@ class GuestsActivity : AppCompatActivity() {
 
         val userId = sharedPreferences.getInt("user_id", 0)
         val cruiseId = sharedPreferences.getLong("cruise_id", 0)
+        var cruiseName: String = ""
+        var cruiseDuration: String = ""
         cruiseViewModel.getCruiseById(context, cruiseId.toInt())?.observe(this, {
             findViewById<TextView>(R.id.amountPay).text = it.Price.toString()
+            cruiseName = it.CruiseName
+            cruiseDuration = it.Duration.toString()
         })
 
         val btnSub = findViewById<Button>(R.id.guestsSubmit)
         btnSub.setOnClickListener{
-//            Toast.makeText( context,"bookingId:${findViewById<TextView>(R.id.amountPay).text.toString().toDouble()}", Toast.LENGTH_SHORT).show()
             val numberOfAdults = findViewById<Spinner>(R.id.adults_spinner).selectedView as TextView
             val numberOfChildren = findViewById<Spinner>(R.id.children_spinner).selectedView as TextView
             val numberOfSenior = findViewById<Spinner>(R.id.senior_spinner).selectedView as TextView
-
-//            val seniorGuest = findViewById<RadioButton>(findViewById<RadioGroup>(R.id.rd_group).checkedRadioButtonId).text.toString()
             val startDate = findViewById<TextView>(R.id.dateDisplay).text.toString()
-
 
             lifecycleScope.launch{
                 var booking_id = bookingViewModel.insertBooking(
                     context = context,
                     customerId = userId,
-                    cruiseCode = cruiseId.toString(),
+                    cruiseCode = cruiseName + " / " + cruiseDuration + " days",
                     numberOfAdults = numberOfAdults.text.toString().toInt(),
                     numberOfKids = numberOfChildren.text.toString().toInt(),
                     numberOfSeniors = numberOfSenior.text.toString().toInt(),

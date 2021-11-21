@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_booking_information.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_booking_list.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_cruise_types.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_guests.xml" value="0.2578125" />
@@ -13,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_personal_information.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_summary.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_update_booking.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_update_user.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_user_information.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_bahamas.xml" value="0.20833333333333334" />
@@ -21,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_date_picker.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_sampler.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/fragment_star.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/list_view_item.xml" value="0.13125" />
       </map>
     </option>
   </component>

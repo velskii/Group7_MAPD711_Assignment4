@@ -19,6 +19,7 @@ class BookingViewModel : ViewModel() {
     // calling repository tasks and
     // sending the results to the Activity
     var liveDataBooking: LiveData<BookingModel>? = null
+    var Bookings: Array<BookingModel>? = null
     var bookingId: Long = 0
 
     //
@@ -33,6 +34,12 @@ class BookingViewModel : ViewModel() {
         liveDataBooking = BookingRepository.getBooking(context, customerId)
         return liveDataBooking
     }
+
+    fun getBookingsByUserId(context: Context, customerId: Int) : Array<BookingModel>? {
+        Bookings = BookingRepository.getBookingsByUserId(context, customerId)
+        return Bookings
+    }
+
 
     fun getBookingById(context: Context, id: Int) : LiveData<BookingModel>? {
         liveDataBooking = BookingRepository.getBookingById(context, id)

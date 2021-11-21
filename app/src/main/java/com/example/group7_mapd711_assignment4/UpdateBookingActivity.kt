@@ -25,11 +25,12 @@ class UpdateBookingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_booking)
 
-        sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
+        sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@UpdateBookingActivity
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
 
         val userId = sharedPreferences.getInt("user_id", 0)
+        val bookingIdSelected = sharedPreferences.getInt("booking_id_selected", 0)
 
         val tvCruiseCode = findViewById<TextView>(R.id.tvCruiseCode)
         val editNoOfAdults = findViewById<EditText>(R.id.tvNoOfAdults)
@@ -38,7 +39,8 @@ class UpdateBookingActivity : AppCompatActivity() {
         val tvAmountPaid = findViewById<TextView>(R.id.tvAmountPaid)
         val tvStartDate = findViewById<TextView>(R.id.tvStartDate)
 
-        bookingViewModel.getBooking(context, userId)!!.observe(this, Observer {
+//        bookingViewModel.getBooking(context, userId)!!.observe(this, Observer {
+        bookingViewModel.getBookingById(context, bookingIdSelected)!!.observe(this, Observer {
             if (it != null) {
                 tvCruiseCode.setText(it.CruiseCode)
                 editNoOfAdults.setText(it.NumberOfAdults.toString())

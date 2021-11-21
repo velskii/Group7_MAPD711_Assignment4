@@ -27,6 +27,9 @@ interface BookingDao {
     @Query("SELECT * FROM booking WHERE customerId =:customerId")
     fun getBooking(customerId: Int) : LiveData<BookingModel>
 
+    @Query("SELECT * FROM booking WHERE customerId =:customerId")
+    fun getBookingsByUserId(customerId: Int): Array<BookingModel>
+
     @Query("SELECT * FROM booking WHERE bookingId =:id")
     fun getBookingById(id: Int) : LiveData<BookingModel>
 

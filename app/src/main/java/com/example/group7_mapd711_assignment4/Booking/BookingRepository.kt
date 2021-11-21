@@ -21,6 +21,7 @@ class BookingRepository {
     companion object {
         var bookingDatabase: BookingDatabase? = null
         var bookingModel: LiveData<BookingModel>? = null
+        var bookingModels: Array<BookingModel>? = null
         var bookingId: Long = 0
 
         //initialize database
@@ -50,6 +51,12 @@ class BookingRepository {
             bookingDatabase = initializeDB(context)
             bookingModel = bookingDatabase!!.bookingDao().getBookingById(id)
             return bookingModel
+        }
+
+        fun getBookingsByUserId(context: Context, customerId: Int) : Array<BookingModel>? {
+            bookingDatabase = initializeDB(context)
+            bookingModels = bookingDatabase!!.bookingDao().getBookingsByUserId(customerId)
+            return bookingModels
         }
 
         fun updateBooking(context: Context, id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int) {

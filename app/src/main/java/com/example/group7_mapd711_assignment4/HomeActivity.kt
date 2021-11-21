@@ -39,7 +39,8 @@ class HomeActivity : AppCompatActivity() {
         context = this@HomeActivity
         val bookingInformation: Button = findViewById<View>(R.id.btnBookingInfo) as Button
         bookingInformation.setOnClickListener{
-            val i = Intent(this@HomeActivity, BookingInformationActivity::class.java)
+//            val i = Intent(this@HomeActivity, BookingInformationActivity::class.java)
+            val i = Intent(this@HomeActivity, BookingListActivity::class.java)
             startActivity(i);
         }
 
