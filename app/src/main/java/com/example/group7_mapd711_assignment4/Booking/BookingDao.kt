@@ -21,9 +21,13 @@ interface BookingDao {
 
     //defining an insert method using @Insert Annotation
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBooking(bookingModel: BookingModel): Long
+    suspend fun insertBooking(bookingModel: BookingModel): Long
 
     //defining a query method using @Query Annotation
     @Query("SELECT * FROM booking WHERE customerId =:customerId")
     fun getBooking(customerId: Int) : LiveData<BookingModel>
+
+    //defining an update method
+    @Query("UPDATE booking SET numberOfAdults=:numberOfAdults, numberOfKids=:numberOfKids, numberOfSeniors=:numberOfSeniors WHERE customerId = :id")
+    suspend fun updateBooking(id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int)
 }

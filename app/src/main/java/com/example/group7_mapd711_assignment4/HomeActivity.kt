@@ -11,7 +11,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
+import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
     lateinit var bookingViewModel: BookingViewModel
@@ -39,7 +41,6 @@ class HomeActivity : AppCompatActivity() {
         bookingInformation.setOnClickListener{
             val i = Intent(this@HomeActivity, BookingInformationActivity::class.java)
             startActivity(i);
-            //Toast.makeText( context,"Ok!!!", Toast.LENGTH_LONG).show()
         }
 
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)

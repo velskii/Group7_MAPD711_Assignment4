@@ -33,4 +33,8 @@ class BookingViewModel : ViewModel() {
         liveDataBooking = BookingRepository.getBooking(context, customerId)
         return liveDataBooking
     }
+
+    fun updateBooking(context: Context, id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int) {
+        BookingRepository.updateBooking(context, id, numberOfAdults, numberOfKids, numberOfSeniors)
+    }
 }

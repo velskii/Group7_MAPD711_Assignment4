@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group7_MAPD711_Assignment4">
         <activity
+            android:name=".BookingInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateBookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserInformationActivity"
             android:exported="false" />
         <activity

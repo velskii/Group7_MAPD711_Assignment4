@@ -58,6 +58,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Booking Information -->
     <string name="booking_information">Booking Information</string>
+    <string name="update_booking_information">Update Booking Information</string>
     <string name="btn_booking_information">Booking Information</string>
     <string name="cruise_code">Cruise Code:</string>
     <string name="number_of_adults">Number Of Adults:</string>
@@ -67,4 +68,5 @@
     <string name="start_date">Start Date:</string>
     <string name="btn_update">Update</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="btn_cancel_booking">Cancel Booking</string>
 </resources>

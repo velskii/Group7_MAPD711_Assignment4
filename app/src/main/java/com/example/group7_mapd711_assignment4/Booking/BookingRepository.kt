@@ -48,5 +48,12 @@ class BookingRepository {
             return bookingModel
         }
 
+        fun updateBooking(context: Context, id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int) {
+            bookingDatabase = initializeDB(context)
+            CoroutineScope(IO).launch {
+//                val userDetails = UserModel(username, password, firstname, lastname, address, city, postalcode, telephone, email)
+                bookingDatabase!!.bookingDao().updateBooking(id, numberOfAdults, numberOfKids, numberOfSeniors)
+            }
+        }
     }
 }

@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5pt"
-    tools:context=".BookingInformationActivity">
+    tools:context=".UpdateBookingActivity">
     <TextView
         android:layout_gravity="center"
         android:layout_marginBottom="20px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/titleFontSize"
-        android:text="@string/booking_information" />
+        android:text="@string/update_booking_information" />
 
     <!-- Body -->
     <LinearLayout
@@ -54,12 +54,13 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvNoOfAdults"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="text" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,12 +78,13 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvNoOfKids"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="text" />
     </LinearLayout>
 
     <LinearLayout
@@ -100,12 +102,13 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvNoOfSeniors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="text" />
     </LinearLayout>
 
     <LinearLayout
@@ -167,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/buttonFontSize"
-            android:text="@string/btn_cancel_booking"/>
+            android:text="@string/btn_cancel"/>
         <Button
             android:layout_marginLeft="20px"
             android:id="@+id/button_update"
