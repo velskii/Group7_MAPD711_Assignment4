@@ -34,11 +34,12 @@ class HomeActivity : AppCompatActivity() {
             val i = Intent(this@HomeActivity, CruiseTypesActivity::class.java)
             startActivity(i);
         }
-
+        context = this@HomeActivity
         val bookingInformation: Button = findViewById<View>(R.id.btnBookingInfo) as Button
         bookingInformation.setOnClickListener{
             val i = Intent(this@HomeActivity, BookingInformationActivity::class.java)
             startActivity(i);
+            //Toast.makeText( context,"Ok!!!", Toast.LENGTH_LONG).show()
         }
 
         sharedPreferences = this.getSharedPreferences("com.example.feiliangzhou_mapd711_assignment4", Context.MODE_PRIVATE)
