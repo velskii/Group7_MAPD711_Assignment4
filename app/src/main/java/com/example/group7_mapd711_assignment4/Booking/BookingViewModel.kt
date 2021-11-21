@@ -21,13 +21,13 @@ class BookingViewModel : ViewModel() {
     var liveDataBooking: LiveData<BookingModel>? = null
 
     //
-    fun insertBooking(context: Context, customerId: String, cruiseCode: String,
+    fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
                       numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int, amoutPaid: Double, startDate: String
     ) {
         BookingRepository.insertBooking(context, customerId, cruiseCode, numberOfAdults, numberOfKids, numberOfSeniors, amoutPaid, startDate)
     }
 
-    fun getBooking(context: Context, customerId: String) : LiveData<BookingModel>? {
+    fun getBooking(context: Context, customerId: Int) : LiveData<BookingModel>? {
         liveDataBooking = BookingRepository.getBooking(context, customerId)
         return liveDataBooking
     }

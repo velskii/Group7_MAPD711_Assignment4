@@ -18,7 +18,7 @@ import java.util.*
 data class BookingModel(
     //defining a column CruiseCode
     @ColumnInfo(name = "customerId")
-    var CustomerId: String,
+    var CustomerId: Int,
     //defining a column CruiseName
     @ColumnInfo(name = "cruiseCode")
     var CruiseCode: String,
