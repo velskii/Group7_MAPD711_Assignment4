@@ -6,10 +6,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
 import com.example.group7_mapd711_assignment4.Cruise.CruiseViewModel
 import java.util.Observer
 
@@ -17,6 +19,7 @@ class CheckoutActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
     lateinit var cruiseViewModel : CruiseViewModel
+    lateinit var bookingViewModel : BookingViewModel
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,7 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checkout)
 
         cruiseViewModel = ViewModelProvider(this).get(CruiseViewModel::class.java)
+        bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
 
         val cruiseId = sharedPreferences.getLong("cruise_id", 0)
@@ -41,14 +45,18 @@ class CheckoutActivity : AppCompatActivity() {
 
         })
 
-        val numberOfAdults = sharedPreferences.getString("numberOfAdults", "").toString()
-        val numberOfChildren = sharedPreferences.getString("numberOfChildren", "").toString()
-        val senior_guest = sharedPreferences.getString("senior_guest", "NO").toString()
+        val booking_id = sharedPreferences.getLong("booking_id", 0)
+
+        bookingViewModel.getBookingById(this@CheckoutActivity, booking_id.toInt())?.observe(this, {
+
+            findViewById<TextView>(R.id.number_adults).text = "Number of adults: "+ it.NumberOfAdults.toString()
+            findViewById<TextView>(R.id.number_children).text = "Number of children:" + it.NumberOfKids.toString()
+            findViewById<TextView>(R.id.senior_guest).text = "Anyone over the age of 60:" + it.NumberOfSeniors.toString()
+
+        })
+//        Toast.makeText( this@CheckoutActivity,"info:${it.CruiseCode}", Toast.LENGTH_SHORT).show()
 
 
-        findViewById<TextView>(R.id.number_adults).text = "Number of adults: $numberOfAdults"
-        findViewById<TextView>(R.id.number_children).text = "Number of children: $numberOfChildren"
-        findViewById<TextView>(R.id.senior_guest).text = "Anyone over the age of 60: $senior_guest"
     }
 
     fun payOptions(v:View){

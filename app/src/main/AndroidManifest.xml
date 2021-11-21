@@ -22,12 +22,6 @@
             android:name=".UpdateUserActivity"
             android:exported="false" />
         <activity
-            android:name=".SummaryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PersonalInformationActivity"
-            android:exported="false" />
-        <activity
             android:name=".PayOptionsActivity"
             android:exported="false" />
         <activity

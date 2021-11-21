@@ -28,7 +28,6 @@ class BookingRepository {
             return BookingDatabase.getDataseClient(context)
         }
 
-        //Initialize insertStudent()
         suspend fun insertBooking(context: Context, customerId: Int, cruiseCode: String,
                           numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int, amoutPaid: Double, startDate: String): Long {
             bookingDatabase = initializeDB(context)
@@ -41,10 +40,15 @@ class BookingRepository {
 
         }
 
-        //Initialize getStudents()
         fun getBooking(context: Context, customerId: Int) : LiveData<BookingModel>? {
             bookingDatabase = initializeDB(context)
             bookingModel = bookingDatabase!!.bookingDao().getBooking(customerId)
+            return bookingModel
+        }
+
+        fun getBookingById(context: Context, id: Int) : LiveData<BookingModel>? {
+            bookingDatabase = initializeDB(context)
+            bookingModel = bookingDatabase!!.bookingDao().getBookingById(id)
             return bookingModel
         }
 

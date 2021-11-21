@@ -110,7 +110,7 @@ class PayOptionsActivity : AppCompatActivity() {
         val textExpiryDte = findViewById<TextView>(R.id.tvExpiryDate)
         val rdbPaymentOptions = findViewById<View>(R.id.rdb_payment_options) as RadioGroup
         val rdbPaymentOptionsId: Int = rdbPaymentOptions.checkedRadioButtonId
-        val intent = Intent(this@PayOptionsActivity, PersonalInformationActivity::class.java)
+        val intent = Intent(this@PayOptionsActivity, HomeActivity::class.java)
         if(rdbPaymentOptionsId != -1) {
             val selectedRadioButton: RadioButton = findViewById(rdbPaymentOptionsId)
             val rdbCreditCardText = selectedRadioButton.text.toString()

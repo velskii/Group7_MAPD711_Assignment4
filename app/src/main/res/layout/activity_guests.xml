@@ -68,7 +68,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Please select your start Date:"
-        android:onClick="datePicking"
         android:textSize="@dimen/descriptionFontSize"/>
     <DatePicker
         android:layout_width="wrap_content"
@@ -87,10 +86,9 @@
 
     <Button
         android:layout_gravity="center"
-        android:id="@+id/members_submit"
+        android:id="@+id/guestsSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="summary_info"
         android:textSize="@dimen/titleFontSize"
         android:text="@string/btn_submit"/>
 
