@@ -34,6 +34,6 @@ data class CruiseModel(
     //defining a primary key field Id
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var Id: Int? = null
+    var id: Int? = null
 }
 

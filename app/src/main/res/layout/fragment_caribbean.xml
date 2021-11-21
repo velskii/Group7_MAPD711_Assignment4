@@ -1,38 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.CaribbeanFragment">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5pt"
+        >
+        <TableRow
+            android:minHeight="100px">
+            <TextView android:text="Name: " />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/normalFontSize"
+                android:text="@string/caribbean" />
+        </TableRow>
+        <TableRow
+            android:minHeight="100px">
+            <TextView android:text="Price ($): " />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/normalFontSize"
+                android:id="@+id/price"
+                android:text="@string/cruise_price_caribbean" />
+        </TableRow>
+        <TableRow
+            android:minHeight="100px">
+            <TextView android:text="Visiting places: " />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/normalFontSize"
+                android:id="@+id/visiting_places"
+                android:text="@string/visiting_places_caribbean" />
+        </TableRow>
+        <TableRow
+            android:minHeight="100px">
+            <TextView android:text="Duration (number of nights): " />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/normalFontSize"
+                android:id="@+id/duration"
+                android:text="@string/duration_caribbean" />
+        </TableRow>
+    </TableLayout>
+
     <LinearLayout
         android:layout_marginLeft="30px"
         android:layout_marginRight="30px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/normalFontSize"
-            android:text="@string/caribbean" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/normalFontSize"
-            android:id="@+id/price"
-            android:text="@string/cruise_price_caribbean" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/normalFontSize"
-            android:id="@+id/visiting_places"
-            android:text="@string/visiting_places_caribbean" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/normalFontSize"
-            android:id="@+id/duration"
-            android:text="@string/duration_caribbean" />
         <ImageView
             android:layout_marginTop="20px"
             android:layout_width="wrap_content"
@@ -51,13 +77,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/cruise_type"
             android:text="@string/caribbean"/>
-        <Button
-            android:onClick="chooseMembers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/titleFontSize"
-            android:text="Next"/>
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
         val username = sharedPreferences.getString("username", "no name")
 
-        findViewById<TextView>(R.id.welcome).text = "$username Welcome! Please enjoy your trip."
+        findViewById<TextView>(R.id.welcome).text = "Welcome $username! Please enjoy your trip."
 
     }
 

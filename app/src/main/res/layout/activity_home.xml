@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".HomeActivity">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,28 +41,12 @@
         android:text="Profile Information"
         android:layout_gravity="center_horizontal"
         />
-    <TextView
+    <Button
+        android:id="@+id/btnBookingInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/userId"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvOutputName"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvOutputCourse"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:text="booking Information"
+        android:layout_gravity="center_horizontal"
         />
 
 

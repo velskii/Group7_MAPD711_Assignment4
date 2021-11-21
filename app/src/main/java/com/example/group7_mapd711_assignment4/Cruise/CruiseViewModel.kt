@@ -18,14 +18,21 @@ class CruiseViewModel : ViewModel() {
     // calling repository tasks and
     // sending the results to the Activity
     var liveDataCruise: LiveData<CruiseModel>? = null
+    var cruiseId: Long = 0
 
     //
-    fun insertCruise(context: Context, cruiseCode: String, cruiseName: String, visitingPlaces: String, price: Double, duration: Int) {
-        CruiseRepository.insertCruise(context, cruiseCode, cruiseName, visitingPlaces, price, duration)
+    suspend fun insertCruise(context: Context, cruiseCode: String, cruiseName: String, visitingPlaces: String, price: Double, duration: Int): Long {
+        cruiseId = CruiseRepository.insertCruise(context, cruiseCode, cruiseName, visitingPlaces, price, duration)
+        return cruiseId
     }
 
     fun getCruise(context: Context, cruiseCode: String) : LiveData<CruiseModel>? {
         liveDataCruise = CruiseRepository.getCruise(context, cruiseCode)
+        return liveDataCruise
+    }
+
+    fun getCruiseById(context: Context, id: Int) : LiveData<CruiseModel>? {
+        liveDataCruise = CruiseRepository.getCruiseById(context, id)
         return liveDataCruise
     }
 }

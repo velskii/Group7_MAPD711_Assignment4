@@ -33,6 +33,7 @@ abstract class CruiseDatabase : RoomDatabase() {
                 INSTANCE = Room
                     .databaseBuilder(context, CruiseDatabase::class.java, "CRUISEDB")
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build()
 
                 return INSTANCE!!

@@ -20,6 +20,7 @@ class CruiseRepository {
     companion object {
         var cruiseDatabase: CruiseDatabase? = null
         var cruiseModel: LiveData<CruiseModel>? = null
+        var cruiseId: Long = 0
 
         //initialize database
         fun initializeDB(context: Context) : CruiseDatabase {
@@ -27,20 +28,26 @@ class CruiseRepository {
         }
 
         //Initialize insertStudent()
-        fun insertCruise(context: Context, cruiseCode: String, cruiseName: String, visitingPlaces: String, price: Double, duration: Int) {
+        suspend fun insertCruise(context: Context, cruiseCode: String, cruiseName: String, visitingPlaces: String, price: Double, duration: Int): Long {
             cruiseDatabase = initializeDB(context)
 
-            CoroutineScope(IO).launch {
+//            CoroutineScope(IO).launch {
                 val studentDetails = CruiseModel(cruiseCode, cruiseName, visitingPlaces, price, duration)
-                cruiseDatabase!!.cruiseDao().insertCruise(studentDetails)
-            }
+                cruiseId = cruiseDatabase!!.cruiseDao().insertCruise(studentDetails)
+                return cruiseId
+//            }
 
         }
 
-        //Initialize getStudents()
         fun getCruise(context: Context, cruiseCode: String) : LiveData<CruiseModel>? {
             cruiseDatabase = initializeDB(context)
             cruiseModel = cruiseDatabase!!.cruiseDao().getCruise(cruiseCode)
+            return cruiseModel
+        }
+
+        fun getCruiseById(context: Context, id: Int) : LiveData<CruiseModel>? {
+            cruiseDatabase = initializeDB(context)
+            cruiseModel = cruiseDatabase!!.cruiseDao().getCruiseById(id)
             return cruiseModel
         }
 
