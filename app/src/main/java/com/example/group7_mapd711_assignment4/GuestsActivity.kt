@@ -34,12 +34,13 @@ class GuestsActivity : AppCompatActivity() {
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
+        val month = c.get(Calendar.MONTH)+1
         val day = c.get(Calendar.DAY_OF_MONTH)
         findViewById<TextView>(R.id.dateDisplay).setText(" "+ day + "/" + month + "/" + year)
 
         findViewById<DatePicker>(R.id.datePicker).setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            findViewById<TextView>(R.id.dateDisplay).setText(" "+ dayOfMonth + "/" + monthOfYear + "/" + year )
+            val displayMonth: Int = monthOfYear + 1
+            findViewById<TextView>(R.id.dateDisplay).setText(" "+ dayOfMonth + "/" + displayMonth + "/" + year )
         }
 
         val userId = sharedPreferences.getInt("user_id", 0)
