@@ -30,11 +30,6 @@ class BookingViewModel : ViewModel() {
         return bookingId
     }
 
-    fun getBooking(context: Context, customerId: Int) : LiveData<BookingModel>? {
-        liveDataBooking = BookingRepository.getBooking(context, customerId)
-        return liveDataBooking
-    }
-
     fun getBookingsByUserId(context: Context, customerId: Int) : Array<BookingModel>? {
         Bookings = BookingRepository.getBookingsByUserId(context, customerId)
         return Bookings

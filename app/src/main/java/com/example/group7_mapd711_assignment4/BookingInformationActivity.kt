@@ -29,15 +29,13 @@ class BookingInformationActivity : AppCompatActivity() {
 
         val booking_id_selected = sharedPreferences.getInt("booking_id_selected", 0)
 
-        val customerId = sharedPreferences.getInt("user_id", 0)
-
         val tvCruiseCode = findViewById<TextView>(R.id.tvCruiseCode)
         val tvNoOfAdults = findViewById<TextView>(R.id.tvNoOfAdults)
         val tvNoOfKids = findViewById<TextView>(R.id.tvNoOfKids)
         val tvNoOfSeniors = findViewById<TextView>(R.id.tvNoOfSeniors)
         val tvAmountPaid = findViewById<TextView>(R.id.tvAmountPaid)
         val tvStartDate = findViewById<TextView>(R.id.tvStartDate)
-//        bookingViewModel.getBooking(context, customerId)!!.observe(this, Observer {
+
         bookingViewModel.getBookingById(context, booking_id_selected)!!.observe(this, Observer {
             if (it != null) {
                 tvCruiseCode.setText(it.CruiseCode)

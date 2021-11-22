@@ -41,12 +41,9 @@ class BookingRepository {
 
         }
 
-        fun getBooking(context: Context, customerId: Int) : LiveData<BookingModel>? {
-            bookingDatabase = initializeDB(context)
-            bookingModel = bookingDatabase!!.bookingDao().getBooking(customerId)
-            return bookingModel
-        }
-
+        /**
+         * Get booking by bookingId
+         */
         fun getBookingById(context: Context, id: Int) : LiveData<BookingModel>? {
             bookingDatabase = initializeDB(context)
             bookingModel = bookingDatabase!!.bookingDao().getBookingById(id)
@@ -59,14 +56,19 @@ class BookingRepository {
             return bookingModels
         }
 
+        /**
+         * Update booking by bookingId
+         */
         fun updateBooking(context: Context, id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int) {
             bookingDatabase = initializeDB(context)
             CoroutineScope(IO).launch {
-//                val userDetails = UserModel(username, password, firstname, lastname, address, city, postalcode, telephone, email)
                 bookingDatabase!!.bookingDao().updateBooking(id, numberOfAdults, numberOfKids, numberOfSeniors)
             }
         }
 
+        /**
+         * Delete booking by bookingId
+         */
         fun deleteBookingById(context: Context, id: Int) {
             bookingDatabase!!.bookingDao().deleteBookingById(id)
         }

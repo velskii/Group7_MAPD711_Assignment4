@@ -1,3 +1,9 @@
+/*
+  MAPD 711 - Samsung Android App Development
+  Group 7
+  Quoc Phong Ngo - 301148406
+  Feiliang Zhou  - 301216989
+ */
 package com.example.group7_mapd711_assignment4
 
 import android.content.Context
@@ -14,7 +20,6 @@ import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
-import com.example.group7_mapd711_assignment4.User.UserViewModel
 
 class UpdateBookingActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -29,7 +34,6 @@ class UpdateBookingActivity : AppCompatActivity() {
         context = this@UpdateBookingActivity
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
 
-        val userId = sharedPreferences.getInt("user_id", 0)
         val bookingIdSelected = sharedPreferences.getInt("booking_id_selected", 0)
 
         val tvCruiseCode = findViewById<TextView>(R.id.tvCruiseCode)
@@ -39,7 +43,6 @@ class UpdateBookingActivity : AppCompatActivity() {
         val tvAmountPaid = findViewById<TextView>(R.id.tvAmountPaid)
         val tvStartDate = findViewById<TextView>(R.id.tvStartDate)
 
-//        bookingViewModel.getBooking(context, userId)!!.observe(this, Observer {
         bookingViewModel.getBookingById(context, bookingIdSelected)!!.observe(this, Observer {
             if (it != null) {
                 tvCruiseCode.setText(it.CruiseCode)
@@ -52,6 +55,7 @@ class UpdateBookingActivity : AppCompatActivity() {
         })
         val bookingId = sharedPreferences.getInt("booking_id_selected", 0)
         val btnUpdate: Button = findViewById<View>(R.id.button_update) as Button
+        // Update action
         btnUpdate.setOnClickListener{
             val noOfAdults = editNoOfAdults.text.toString()
             val noOfKids = editNoOfKids.text.toString()

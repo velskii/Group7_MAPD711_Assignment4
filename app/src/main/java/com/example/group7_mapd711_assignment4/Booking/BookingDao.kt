@@ -23,10 +23,6 @@ interface BookingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBooking(bookingModel: BookingModel): Long
 
-    //defining a query method using @Query Annotation
-    @Query("SELECT * FROM booking WHERE customerId =:customerId")
-    fun getBooking(customerId: Int) : LiveData<BookingModel>
-
     @Query("SELECT * FROM booking WHERE customerId =:customerId")
     fun getBookingsByUserId(customerId: Int): Array<BookingModel>
 
