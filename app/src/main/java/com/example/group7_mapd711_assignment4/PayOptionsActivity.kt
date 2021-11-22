@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import java.util.*
 
 class PayOptionsActivity : AppCompatActivity() {
@@ -131,12 +132,31 @@ class PayOptionsActivity : AppCompatActivity() {
                 }
                 else {
 
-                    startActivity(intent)
+//                    startActivity(intent)
+                    this.showDialog()
                 }
             } else {
-                startActivity(intent)
+//                startActivity(intent)
+                this.showDialog()
             }
         }
+    }
+
+    fun showDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Booking successfully!")
+        builder.setMessage("Go back home activity?")
+
+        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+            val intent = Intent(this@PayOptionsActivity, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        builder.setNegativeButton(android.R.string.no) { dialog, which ->
+            val intent = Intent(this@PayOptionsActivity, BookingListActivity::class.java)
+            startActivity(intent)
+        }
+        builder.show()
     }
 
 }
