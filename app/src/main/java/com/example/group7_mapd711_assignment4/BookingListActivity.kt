@@ -31,7 +31,7 @@ class BookingListActivity : AppCompatActivity() {
         var list = emptyArray<String>()
         if (bookingList != null && bookingList.isNotEmpty()) {
             for (i in bookingList) {
-                list += ("BookingId: " + i.BookingId.toString() + " Cruise:" + i.CruiseCode)
+                list += ("BookingId: " + i.BookingId.toString() + " Cruise: " + i.CruiseCode)
             }
         } else {
             val tvBookingMsg = findViewById<TextView>(R.id.tvBookingMsg)

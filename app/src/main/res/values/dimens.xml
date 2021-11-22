@@ -5,4 +5,5 @@
     <dimen name="descriptionFontSize">12pt</dimen>
     <dimen name="important_text">13pt</dimen>
     <dimen name="buttonFontSize">7pt</dimen>
+    <dimen name="updateBookingFontSize">8pt</dimen>
 </resources>

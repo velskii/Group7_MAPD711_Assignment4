@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,13 +55,19 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/tvNoOfAdults"
+<!--        <EditText-->
+<!--            android:id="@+id/tvNoOfAdults"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="100px"-->
+<!--            android:ems="10"-->
+<!--            android:inputType="text" />-->
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100px"
-            android:ems="10"
-            android:inputType="text" />
+            android:id="@+id/no_of_adults"
+            android:tooltipText="Number of adults"
+            android:entries="@array/adults_number" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,13 +85,12 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/tvNoOfKids"
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100px"
-            android:ems="10"
-            android:inputType="text" />
+            android:id="@+id/no_of_kids"
+            android:tooltipText="Number of kids"
+            android:entries="@array/children_number" />
     </LinearLayout>
 
     <LinearLayout
@@ -102,13 +108,12 @@
             android:textStyle="bold"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/tvNoOfSeniors"
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100px"
-            android:ems="10"
-            android:inputType="text" />
+            android:id="@+id/no_of_seniors"
+            android:tooltipText="Number of seniors"
+            android:entries="@array/senior_number" />
     </LinearLayout>
 
     <LinearLayout
@@ -131,7 +136,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -154,7 +160,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
