@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,7 +108,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -128,7 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
@@ -151,7 +156,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100px"
-            android:ems="10" />
+            android:ems="10"
+            android:textSize="@dimen/updateBookingFontSize" />
     </LinearLayout>
 
     <LinearLayout
