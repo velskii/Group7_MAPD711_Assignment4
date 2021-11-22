@@ -163,7 +163,7 @@
         android:paddingRight="50px">
         <Button
             android:layout_gravity="center"
-            android:id="@+id/button_cancel"
+            android:id="@+id/button_cancel_booking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/buttonFontSize"
@@ -175,6 +175,21 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/buttonFontSize"
             android:text="@string/btn_update"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <Button
+            android:layout_marginLeft="20px"
+            android:id="@+id/button_back_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="@string/btn_booking_list"/>
     </LinearLayout>
 
 </LinearLayout>

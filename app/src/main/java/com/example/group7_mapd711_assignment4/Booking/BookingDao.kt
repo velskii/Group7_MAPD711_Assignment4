@@ -34,6 +34,9 @@ interface BookingDao {
     fun getBookingById(id: Int) : LiveData<BookingModel>
 
     //defining an update method
-    @Query("UPDATE booking SET numberOfAdults=:numberOfAdults, numberOfKids=:numberOfKids, numberOfSeniors=:numberOfSeniors WHERE customerId = :id")
+    @Query("UPDATE booking SET numberOfAdults=:numberOfAdults, numberOfKids=:numberOfKids, numberOfSeniors=:numberOfSeniors WHERE bookingId = :id")
     suspend fun updateBooking(id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int)
+
+    @Query("DELETE FROM booking WHERE bookingId =:id")
+    fun deleteBookingById(id: Int)
 }

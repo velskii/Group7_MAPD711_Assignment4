@@ -49,4 +49,8 @@ class BookingViewModel : ViewModel() {
     fun updateBooking(context: Context, id: Int, numberOfAdults: Int, numberOfKids: Int, numberOfSeniors: Int) {
         BookingRepository.updateBooking(context, id, numberOfAdults, numberOfKids, numberOfSeniors)
     }
+
+    fun deleteBookingById(context: Context, id: Int) {
+        BookingRepository.deleteBookingById(context,id)
+    }
 }

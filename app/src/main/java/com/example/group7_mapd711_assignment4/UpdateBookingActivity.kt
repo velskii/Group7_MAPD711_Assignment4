@@ -50,7 +50,7 @@ class UpdateBookingActivity : AppCompatActivity() {
                 tvStartDate.setText(it.StartDate)
             }
         })
-
+        val bookingId = sharedPreferences.getInt("booking_id_selected", 0)
         val btnUpdate: Button = findViewById<View>(R.id.button_update) as Button
         btnUpdate.setOnClickListener{
             val noOfAdults = editNoOfAdults.text.toString()
@@ -58,20 +58,11 @@ class UpdateBookingActivity : AppCompatActivity() {
             val noOfSeniors = editNoOfSeniors.text.toString()
 
             if (noOfAdults.isDigitsOnly() && noOfKids.isDigitsOnly() && noOfSeniors.isDigitsOnly()) {
-                bookingViewModel.updateBooking(context = context, id = userId, numberOfAdults = noOfAdults.toInt(),
+                bookingViewModel.updateBooking(context = context, id = bookingId, numberOfAdults = noOfAdults.toInt(),
                     numberOfKids = noOfKids.toInt(), numberOfSeniors = noOfSeniors.toInt())
 
                 val i = Intent(this@UpdateBookingActivity, BookingInformationActivity::class.java)
                 startActivity(i);
-//                userViewModel.getUsersById(context, userId)!!.observe(this, Observer {
-//
-//                    if (it != null) {
-//                        Toast.makeText(context, "${it.firstname}", Toast.LENGTH_LONG).show()
-//                        val i = Intent(this@UpdateUserActivity, UserInformationActivity::class.java)
-//                        startActivity(i);
-//                    }
-//                })
-
             } else {
                 Toast.makeText( context,"Please enter digit only for number of adults, kids, seniors fields.", Toast.LENGTH_LONG).show()
             }

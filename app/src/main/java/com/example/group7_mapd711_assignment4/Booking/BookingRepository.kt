@@ -66,5 +66,9 @@ class BookingRepository {
                 bookingDatabase!!.bookingDao().updateBooking(id, numberOfAdults, numberOfKids, numberOfSeniors)
             }
         }
+
+        fun deleteBookingById(context: Context, id: Int) {
+            bookingDatabase!!.bookingDao().deleteBookingById(id)
+        }
     }
 }

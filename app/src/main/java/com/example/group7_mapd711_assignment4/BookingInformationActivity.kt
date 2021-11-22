@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
@@ -51,6 +53,34 @@ class BookingInformationActivity : AppCompatActivity() {
         val btnUpdate: Button = findViewById<View>(R.id.button_update) as Button
         btnUpdate.setOnClickListener{
             val i = Intent(this@BookingInformationActivity, UpdateBookingActivity::class.java)
+            startActivity(i);
+        }
+        // Cancel booking
+        val btnCancel: Button = findViewById<View>(R.id.button_cancel_booking) as Button
+        btnCancel.setOnClickListener{
+            val builder = AlertDialog.Builder(this@BookingInformationActivity)
+            builder.setMessage("Are you sure you want to cancel this booking?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { dialog, id ->
+                    // Delete selected note from database
+                    //if(bookingId != 0) {
+                    bookingViewModel.deleteBookingById(context, booking_id_selected)
+                    Toast.makeText( context,"Cancel booking successfully!!!", Toast.LENGTH_LONG).show()
+                    val i = Intent(this@BookingInformationActivity, BookingListActivity::class.java)
+                    startActivity(i);
+                    //}
+                }
+                .setNegativeButton("No") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
+        }
+        // Back to Booking List screen
+        val btnHome: Button = findViewById<View>(R.id.button_back_home) as Button
+        btnHome.setOnClickListener{
+            val i = Intent(this@BookingInformationActivity, BookingListActivity::class.java)
             startActivity(i);
         }
     }
