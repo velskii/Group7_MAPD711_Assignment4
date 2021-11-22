@@ -15,11 +15,18 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/titleFontSize"
         android:text="Booking list" />
+    <TextView
+        android:id="@+id/tvBookingMsg"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/buttonFontSize" />
 
     <ListView
         android:id="@+id/bookings_list_view"
         android:layout_width="400dp"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

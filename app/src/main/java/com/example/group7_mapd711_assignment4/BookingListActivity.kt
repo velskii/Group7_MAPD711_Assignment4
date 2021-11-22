@@ -29,10 +29,13 @@ class BookingListActivity : AppCompatActivity() {
         val bookingList: Array<BookingModel>? = bookingViewModel.getBookingsByUserId(context, userId)
 
         var list = emptyArray<String>()
-        if (bookingList != null) {
+        if (bookingList != null && bookingList.isNotEmpty()) {
             for (i in bookingList) {
                 list += ("BookingId: " + i.BookingId.toString() + " Cruise:" + i.CruiseCode)
             }
+        } else {
+            val tvBookingMsg = findViewById<TextView>(R.id.tvBookingMsg)
+            tvBookingMsg.setText("There is no booking found.")
         }
         val listView = findViewById<ListView>(R.id.bookings_list_view)
 
