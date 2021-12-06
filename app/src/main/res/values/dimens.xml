@@ -6,4 +6,8 @@
     <dimen name="important_text">13pt</dimen>
     <dimen name="buttonFontSize">7pt</dimen>
     <dimen name="updateBookingFontSize">8pt</dimen>
+    <dimen name="optionsDim">40dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="smallTextSize">20sp</dimen>
 </resources>

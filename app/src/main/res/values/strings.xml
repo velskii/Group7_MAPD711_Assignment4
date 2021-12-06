@@ -73,4 +73,7 @@
     <string name="btn_cancel">Cancel</string>
     <string name="btn_cancel_booking">Cancel Booking</string>
     <string name="btn_booking_list">Booking List</string>
+    <string name="cd_play_icon">Play music icon</string>
+    <string name="cd_stop_icon">Stop music icon</string>
+    <string name="song_name">Get song name</string>
 </resources>
