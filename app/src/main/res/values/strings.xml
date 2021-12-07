@@ -76,4 +76,9 @@
     <string name="cd_play_icon">Play music icon</string>
     <string name="cd_stop_icon">Stop music icon</string>
     <string name="song_name">Get song name</string>
+    <string name="service_is_not_bound">Service isn\'t bound</string>
+    <string name="unknown">Unknown</string>
+    <string name="music_started">Music started</string>
+    <string name="music_stopped">Music stopped</string>
+    <string name="songs_shuffled">Songs shuffled</string>
 </resources>
