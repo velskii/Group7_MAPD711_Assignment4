@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var userViewModel: UserViewModel
     lateinit var context: Context
-    lateinit var username: String
+    lateinit var email: String
     lateinit var password: String
     private lateinit var auth: FirebaseAuth
 
@@ -39,31 +39,28 @@ class LoginActivity : AppCompatActivity() {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         var btnLogin: Button =findViewById(R.id.btnLogin)
-        var editUsername: EditText =findViewById(R.id.username_login)
+        var editEmail: EditText =findViewById(R.id.email_login)
         var editPassword: EditText =findViewById(R.id.password_login)
 
         btnLogin.setOnClickListener {
-            username = editUsername.text.toString().trim()
+            email = editEmail.text.toString().trim()
             password = editPassword.text.toString().trim()
 
-            if (username.isEmpty()) {
-                editUsername.error = "Enter Username"
-            } else if (password.isEmpty()) {
-                editPassword.error = "Please Enter password"
+            if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                editEmail.error = "Enter the Email with right format"
+            } else if (password.isEmpty()|| (password.length < 6)) {
+                editPassword.error = "Please Enter password more than 6 digits"
             } else {
-                val email = username
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this)
                     { task ->
                         if (task.isSuccessful) {
-                            Log.d(LoginActivity.TAG, "signInWithEmail:success")
+                            Log.d(TAG, "signInWithEmail:success")
                             val user = auth.currentUser
                             updateUI(user)
                         } else {
-                            Log.w(LoginActivity.TAG, "signInWithEmail:failure", task.exception)
-                            Toast.makeText(baseContext, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show()
-                            updateUI(null)
+                            Log.w(TAG, "signInWithEmail:failure", task.exception)
+                            Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
@@ -92,9 +89,12 @@ class LoginActivity : AppCompatActivity() {
                 sharedPreferences.edit().putString(
                     "username", email.substringBefore("@")
                 ).apply()
+                sharedPreferences.edit().putString(
+                    "email", email
+                ).apply()
             }
             sharedPreferences.edit().putString(
-                "email", email
+                "password", password
             ).apply()
         }
 

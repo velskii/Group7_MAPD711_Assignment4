@@ -14,8 +14,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
-import com.example.group7_mapd711_assignment4.User.UserViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import android.util.Log
@@ -24,7 +22,6 @@ import com.example.group7_mapd711_assignment4.firebase.User
 class UserInformationActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var userViewModel: UserViewModel
     lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +30,6 @@ class UserInformationActivity : AppCompatActivity() {
 
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@UserInformationActivity
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         val editUsername = findViewById<TextView>(R.id.username_show)
         val editPassword = findViewById<TextView>(R.id.password_show)
@@ -46,56 +42,39 @@ class UserInformationActivity : AppCompatActivity() {
         val editEmail = findViewById<TextView>(R.id.email_show)
 
         val uid = sharedPreferences.getString("user_id_firebase", "")
+        editUsername.setText(sharedPreferences.getString("username", ""))
+        editPassword.setText(sharedPreferences.getString("password", ""))
+        editEmail.setText(sharedPreferences.getString("email", ""))
 
         if (uid != null) {
             User(uid).getUserByUid(uid).addOnSuccessListener {
-//            userTable.child(uid).get().addOnSuccessListener {
-                var un = ""
-                var pw = ""
-                var fn = ""
-                var ln = ""
-                var ad = ""
-                var ct = ""
-                var pc = ""
-                var tp = ""
-                var em = ""
                 if (it.child("username").value != null) {
-                    un = it.child("username").value.toString()
+                    editUsername.setText(it.child("username").value.toString())
                 }
                 if (it.child("password").value != null) {
-                    pw = it.child("password").value.toString()
+                    editPassword.setText(it.child("password").value.toString())
                 }
                 if (it.child("firstname").value != null) {
-                    fn = it.child("firstname").value.toString()
+                    editFirstname.setText(it.child("firstname").value.toString())
                 }
                 if (it.child("lastname").value != null) {
-                    ln = it.child("lastname").value.toString()
+                    editLastname.setText(it.child("lastname").value.toString())
                 }
                 if (it.child("address").value != null) {
-                    ad = it.child("address").value.toString()
+                    editAddress.setText(it.child("address").value.toString())
                 }
                 if (it.child("city").value != null) {
-                    ct = it.child("city").value.toString()
+                    editCity.setText(it.child("city").value.toString())
                 }
                 if (it.child("postalcode").value != null) {
-                    pc = it.child("postalcode").value.toString()
+                    editPostalcode.setText(it.child("postalcode").value.toString())
                 }
                 if (it.child("telephone").value != null) {
-                    tp = it.child("telephone").value.toString()
+                    editTelephone.setText(it.child("telephone").value.toString())
                 }
                 if (it.child("email").value != null) {
-                    em = it.child("email").value.toString()
+                    editEmail.setText(it.child("email").value.toString())
                 }
-
-                editUsername.setText(un)
-                editPassword.setText(pw)
-                editFirstname.setText(fn)
-                editLastname.setText(ln)
-                editAddress.setText(ad)
-                editCity.setText(ct)
-                editPostalcode.setText(pc)
-                editTelephone.setText(tp)
-                editEmail.setText(em)
             }.addOnFailureListener{
                 Log.e(TAG, "Error getting data", it)
             }

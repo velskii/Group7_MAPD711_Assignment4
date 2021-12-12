@@ -10,6 +10,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -72,9 +73,9 @@ class PayOptionsActivity : AppCompatActivity() {
     {
         if(v.id == R.id.rdb_credit_card)
         {
-            val layoutPickExpiryDate = findViewById<LinearLayout>(R.id.layout_pick_expiry_date)
-            val layoutExpiryDate = findViewById<LinearLayout>(R.id.layout_expiry_date)
-            val editTextCreditCard = findViewById<EditText>(R.id.edit_text_credit_card)
+//            val layoutPickExpiryDate = findViewById<LinearLayout>(R.id.layout_pick_expiry_date)
+//            val layoutExpiryDate = findViewById<LinearLayout>(R.id.layout_expiry_date)
+//            val editTextCreditCard = findViewById<EditText>(R.id.edit_text_credit_card)
             val rdbPaymentOptions = findViewById<View>(R.id.rdb_payment_options) as RadioGroup
             val rdbPaymentOptionsId: Int = rdbPaymentOptions.checkedRadioButtonId
 
@@ -82,9 +83,9 @@ class PayOptionsActivity : AppCompatActivity() {
                 val selectedRadioButton: RadioButton = findViewById(rdbPaymentOptionsId)
                 val rdbCreditCardText = selectedRadioButton.text.toString()
                 if (rdbCreditCardText == "Credit Card") {
-                    layoutPickExpiryDate.visibility = View.VISIBLE
-                    layoutExpiryDate.visibility = View.VISIBLE
-                    editTextCreditCard.visibility = View.VISIBLE
+//                    layoutPickExpiryDate.visibility = View.VISIBLE
+//                    layoutExpiryDate.visibility = View.VISIBLE
+//                    editTextCreditCard.visibility = View.VISIBLE
                 }
             }
         }
@@ -94,9 +95,6 @@ class PayOptionsActivity : AppCompatActivity() {
     {
         if(v.id == R.id.rdb_cash)
         {
-            val layoutPickExpiryDate = findViewById<LinearLayout>(R.id.layout_pick_expiry_date)
-            val layoutExpiryDate = findViewById<LinearLayout>(R.id.layout_expiry_date)
-            val editTextCreditCard = findViewById<EditText>(R.id.edit_text_credit_card)
             val rdbPaymentOptions = findViewById<View>(R.id.rdb_payment_options) as RadioGroup
             val rdbPaymentOptionsId: Int = rdbPaymentOptions.checkedRadioButtonId
 
@@ -104,9 +102,9 @@ class PayOptionsActivity : AppCompatActivity() {
                 val selectedRadioButton: RadioButton = findViewById(rdbPaymentOptionsId)
                 val rdbCreditCardText = selectedRadioButton.text.toString()
                 if (rdbCreditCardText == "Cash") {
-                    layoutPickExpiryDate.visibility = View.INVISIBLE
-                    layoutExpiryDate.visibility = View.INVISIBLE
-                    editTextCreditCard.visibility = View.INVISIBLE
+//                    layoutPickExpiryDate.visibility = View.INVISIBLE
+//                    layoutExpiryDate.visibility = View.INVISIBLE
+//                    editTextCreditCard.visibility = View.INVISIBLE
                 }
             }
         }
@@ -135,14 +133,19 @@ class PayOptionsActivity : AppCompatActivity() {
                         "Expiry Date must not be empty",
                         Toast.LENGTH_LONG
                     ).show()
-                }
-                else {
-
-//                    startActivity(intent)
+                } else {
                     this.showDialog()
                 }
             } else {
-//                startActivity(intent)
+                val cashNumber = findViewById<EditText>(R.id.edit_text_cash_card)
+                if (cashNumber.text.toString().toInt() < 100) {
+                    Toast.makeText(
+                        this@PayOptionsActivity,
+                        "Cash must be more than 100",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return
+                }
                 this.showDialog()
             }
         }

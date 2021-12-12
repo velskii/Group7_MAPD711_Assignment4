@@ -33,7 +33,7 @@
         <RadioGroup
             android:id="@+id/rdb_payment_options"
             android:layout_width="match_parent"
-            android:layout_height="128dp" >
+            android:layout_height="300dp" >
 
             <RadioButton
                 android:id="@+id/rdb_cash"
@@ -42,15 +42,24 @@
                 android:text="Cash"
                 android:onClick="rdbCash_Click" />
 
+            <EditText
+                android:id="@+id/edit_text_cash_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100px"
+                android:paddingTop="5px"
+                android:ems="10"
+                android:inputType="text" />
+
             <RadioButton
                 android:id="@+id/rdb_credit_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="rdbCreditCard_Click"
+                android:layout_marginTop="75dp"
                 android:text="Credit Card" />
             <EditText
                 android:id="@+id/edit_text_credit_card"
-                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100px"
@@ -62,7 +71,6 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layout_expiry_date"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="50px"
@@ -76,7 +84,6 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layout_pick_expiry_date"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="50px"

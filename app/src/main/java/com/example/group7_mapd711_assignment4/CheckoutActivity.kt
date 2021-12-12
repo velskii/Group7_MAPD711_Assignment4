@@ -33,17 +33,16 @@ class CheckoutActivity : AppCompatActivity() {
 
         if (userId != null && bookingId != null) {
             Cruise(userId).getCruiseById(userId).addOnSuccessListener {
-                Log.e("zz", it.child("cruiseCode").value.toString())
-                findViewById<TextView>(R.id.cruise_type_checked).text = it.child("cruiseName").value.toString()
-                findViewById<TextView>(R.id.price_stored).text = it.child("price").value.toString()
-                findViewById<TextView>(R.id.visiting_places_stored).text = it.child("visitingPlaces").value.toString()
-                findViewById<TextView>(R.id.duration_stored).text = it.child("duration").value.toString()
+                findViewById<TextView>(R.id.cruise_type_checked).text = "Cruise Name: " + it.child("cruiseName").value.toString()
+                findViewById<TextView>(R.id.price_stored).text = "Price: " + it.child("price").value.toString() + " $"
+                findViewById<TextView>(R.id.visiting_places_stored).text = "Visiting Places: \n" + it.child("visitingPlaces").value.toString()
+                findViewById<TextView>(R.id.duration_stored).text = "Duration: " + it.child("duration").value.toString() + " day(s)"
             }
             Booking(userId).getBookingByUidAndBid(userId, bookingId).addOnSuccessListener {
-                Log.e("zz", it.child("startDate").value.toString())
-                findViewById<TextView>(R.id.number_adults).text = "Number of adults: "+ it.child("numberOfAdults").value.toString()
-                findViewById<TextView>(R.id.number_children).text = "Number of children: " + it.child("numberOfKids").value.toString()
-                findViewById<TextView>(R.id.senior_guest).text = "Number of senior: " + it.child("numberOfSeniors").value.toString()
+//                Log.e("zz", it.child("startDate").value.toString())
+                findViewById<TextView>(R.id.number_adults).text = "Number of adults: \n"+ it.child("numberOfAdults").value.toString()
+                findViewById<TextView>(R.id.number_children).text = "Number of children: \n" + it.child("numberOfKids").value.toString()
+                findViewById<TextView>(R.id.senior_guest).text = "Number of senior: \n" + it.child("numberOfSeniors").value.toString()
             }
         }
     }

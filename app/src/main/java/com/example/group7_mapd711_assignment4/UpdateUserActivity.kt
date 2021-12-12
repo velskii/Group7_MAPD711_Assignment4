@@ -15,8 +15,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.example.group7_mapd711_assignment4.User.UserViewModel
 import com.google.firebase.ktx.Firebase
 import android.util.Log
 import com.example.group7_mapd711_assignment4.firebase.User
@@ -25,7 +23,6 @@ import com.google.firebase.auth.ktx.auth
 class UpdateUserActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var userViewModel: UserViewModel
     lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +31,14 @@ class UpdateUserActivity : AppCompatActivity() {
 
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@UpdateUserActivity
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         val username = sharedPreferences.getString("username", "no name")
         val password = sharedPreferences.getString("password", "no psw")
+        val email = sharedPreferences.getString("email", "no psw")
 
         findViewById<EditText>(R.id.username_update).setText(username)
         findViewById<EditText>(R.id.password_update).setText(password)
+        findViewById<EditText>(R.id.email_update).setText(email)
 
         val editFirstname = findViewById<EditText>(R.id.firstname_update)
         val editLastname = findViewById<EditText>(R.id.lastname_update)
@@ -58,19 +56,34 @@ class UpdateUserActivity : AppCompatActivity() {
             val uid = userData.uid
 
             User(uid).getUserByUid(uid).addOnSuccessListener {
-//            userTable.child(uid).get().addOnSuccessListener {
-                editFirstname.setText(it.child("firstname").value.toString())
-                editLastname.setText(it.child("lastname").value.toString())
-                editAddress.setText(it.child("address").value.toString())
-                editCity.setText(it.child("city").value.toString())
-                editPostalcode.setText(it.child("postalcode").value.toString())
-                editTelephone.setText(it.child("telephone").value.toString())
-                editEmail.setText(it.child("email").value.toString())
+                if (it.child("firstname").value != null) {
+                    editFirstname.setText(it.child("firstname").value.toString())
+                }
+                if (it.child("lastname").value != null) {
+                    editLastname.setText(it.child("lastname").value.toString())
+                }
+                if (it.child("address").value != null) {
+                    editAddress.setText(it.child("address").value.toString())
+                }
+                if (it.child("city").value != null) {
+                    editCity.setText(it.child("city").value.toString())
+                }
+                if (it.child("postalcode").value != null) {
+                    editPostalcode.setText(it.child("postalcode").value.toString())
+                }
+                if (it.child("telephone").value != null) {
+                    editTelephone.setText(it.child("telephone").value.toString())
+                }
+                if (it.child("email").value != null) {
+                    editEmail.setText(it.child("email").value.toString())
+                }
             }
         }
 
         val btnUpdate: Button = findViewById<View>(R.id.btnUpdate) as Button
         btnUpdate.setOnClickListener{
+            val newUsername = findViewById<EditText>(R.id.username_update).text.toString()
+            val newPassword = findViewById<EditText>(R.id.password_update).text.toString()
             val firstname = editFirstname.text.toString()
             val lastname = editLastname.text.toString()
             val address = editAddress.text.toString()
@@ -85,7 +98,7 @@ class UpdateUserActivity : AppCompatActivity() {
 //                    val email = userData.email
                     val uid = userData.uid
                     if (email != null) {
-                        User(uid).writeNewUser(username, password, firstname, lastname, address, city, postalcode, telephone, email)
+                        User(uid).writeNewUser(newUsername, newPassword, firstname, lastname, address, city, postalcode, telephone, email)
                     }
                 }
                 val i = Intent(this@UpdateUserActivity, UserInformationActivity::class.java)
