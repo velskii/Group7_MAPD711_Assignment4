@@ -18,6 +18,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.group7_mapd711_assignment4.User.UserViewModel
 import kotlinx.coroutines.launch
+import android.util.Log
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -28,9 +34,13 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var password: String
     lateinit var passwordRepeat: String
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        auth = Firebase.auth
 
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
         context = this@RegisterActivity
@@ -59,18 +69,21 @@ class RegisterActivity : AppCompatActivity() {
                 editRepeatPassword.error = "Not same with Password"
             }
             else {
-                lifecycleScope.launch{
-                    var user_id = userViewModel.insertUser(context, username, password)
-//                    sharedPreferences.edit().putLong(
-//                        "user_id", user_id
-//                    ).apply()
-//                  Toast.makeText( context,"Login successfully${user_id}", Toast.LENGTH_LONG).show()
-
-                    val i = Intent(this@RegisterActivity, LoginActivity::class.java)
-                    startActivity(i)
-                }
-
-
+                val email = username
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this)
+                    { task ->
+                        if (task.isSuccessful) {
+                            Log.d(RegisterActivity.TAG, "createUserWithEmail:success")
+                            val user = auth.currentUser
+                            updateUI(user)
+                        } else {
+                            Log.w(RegisterActivity.TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(baseContext, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                            updateUI(null)
+                        }
+                    }
             }
         }
 
@@ -79,7 +92,18 @@ class RegisterActivity : AppCompatActivity() {
             val i = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(i)
         }
+    }
 
+    private fun updateUI(user: FirebaseUser?) {
+        val i = Intent(this@RegisterActivity, LoginActivity::class.java)
+        startActivity(i)
+    }
 
+    private fun reload() {
+
+    }
+
+    companion object {
+        private const val TAG = "EmailPassword"
     }
 }

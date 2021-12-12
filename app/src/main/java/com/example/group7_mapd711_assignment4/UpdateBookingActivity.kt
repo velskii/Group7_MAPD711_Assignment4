@@ -17,6 +17,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
+import com.example.group7_mapd711_assignment4.firebase.Booking
 
 class UpdateBookingActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -31,7 +32,8 @@ class UpdateBookingActivity : AppCompatActivity() {
         context = this@UpdateBookingActivity
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
 
-        val bookingIdSelected = sharedPreferences.getInt("booking_id_selected", 0)
+        val bookingIdSelected = sharedPreferences.getString("booking_id_selected", "0")
+        val userId = sharedPreferences.getString("user_id_firebase", "0")
 
         val tvCruiseCode = findViewById<TextView>(R.id.tvCruiseCode)
         val editNoOfAdults = findViewById<Spinner>(R.id.no_of_adults)
@@ -40,28 +42,41 @@ class UpdateBookingActivity : AppCompatActivity() {
         val tvAmountPaid = findViewById<TextView>(R.id.tvAmountPaid)
         val tvStartDate = findViewById<TextView>(R.id.tvStartDate)
 
-        bookingViewModel.getBookingById(context, bookingIdSelected)!!.observe(this, Observer {
-            if (it != null) {
-                tvCruiseCode.setText(it.CruiseCode)
-                editNoOfAdults.setSelection(it.NumberOfAdults - 1)
-                editNoOfKids.setSelection(it.NumberOfKids - 1)
-                editNoOfSeniors.setSelection(it.NumberOfSeniors - 1)
-                tvAmountPaid.setText(it.AmountPaid.toString())
-                tvStartDate.setText(it.StartDate)
+        if (userId != null && bookingIdSelected != null) {
+            Booking(userId).getBookingByUidAndBid(userId, bookingIdSelected).addOnSuccessListener{
+                tvCruiseCode.setText(it.child("cruiseCode").value.toString())
+                editNoOfAdults.setSelection(it.child("numberOfAdults").value.toString().toInt() -1)
+                editNoOfKids.setSelection(it.child("numberOfKids").value.toString().toInt() -1)
+                editNoOfSeniors.setSelection(it.child("numberOfSeniors").value.toString().toInt() -1)
+                tvAmountPaid.setText(it.child("amountPaid").value.toString())
+                tvStartDate.setText(it.child("startDate").value.toString())
             }
-        })
-        val bookingId = sharedPreferences.getInt("booking_id_selected", 0)
+        }
+
         val btnUpdate: Button = findViewById<View>(R.id.button_update) as Button
         // Update action
         btnUpdate.setOnClickListener{
             val noOfAdults = editNoOfAdults.selectedItem.toString()
             val noOfKids = editNoOfKids.selectedItem.toString()
             val noOfSeniors = editNoOfSeniors.selectedItem.toString()
+            val cruiseCode = tvCruiseCode.text.toString()
+            val amountPaid = tvAmountPaid.text.toString()
+            val startDate = tvStartDate.text.toString()
 
             if (noOfAdults.isDigitsOnly() && noOfKids.isDigitsOnly() && noOfSeniors.isDigitsOnly()) {
-                bookingViewModel.updateBooking(context = context, id = bookingId, numberOfAdults = noOfAdults.toInt(),
-                    numberOfKids = noOfKids.toInt(), numberOfSeniors = noOfSeniors.toInt())
-
+//                bookingViewModel.updateBooking(context = context, id = bookingId, numberOfAdults = noOfAdults.toInt(),
+//                    numberOfKids = noOfKids.toInt(), numberOfSeniors = noOfSeniors.toInt())
+                if (userId != null && bookingIdSelected != null) {
+                    Booking(userId).updateBooking(
+                        id = bookingIdSelected,
+                        cruiseCode = cruiseCode,
+                        numberOfAdults = noOfAdults.toInt(),
+                        numberOfKids = noOfKids.toInt(),
+                        numberOfSeniors = noOfSeniors.toInt(),
+                        amountPaid = amountPaid,
+                        startDate = startDate
+                    )
+                }
                 val i = Intent(this@UpdateBookingActivity, BookingInformationActivity::class.java)
                 startActivity(i);
             } else {

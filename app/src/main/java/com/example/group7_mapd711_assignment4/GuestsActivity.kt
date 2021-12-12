@@ -15,11 +15,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
 import com.example.group7_mapd711_assignment4.Cruise.CruiseViewModel
-import com.example.group7_mapd711_assignment4.User.UserViewModel
-import kotlinx.coroutines.launch
+import com.example.group7_mapd711_assignment4.firebase.Booking
+import com.example.group7_mapd711_assignment4.firebase.Cruise
 import java.util.*
 
 class GuestsActivity : AppCompatActivity() {
@@ -49,43 +48,39 @@ class GuestsActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.dateDisplay).setText(" "+ dayOfMonth + "/" + displayMonth + "/" + year )
         }
 
-        val userId = sharedPreferences.getInt("user_id", 0)
-        val cruiseId = sharedPreferences.getLong("cruise_id", 0)
+        val userId = sharedPreferences.getString("user_id_firebase", "0")
+        var cruiseCode: String = ""
         var cruiseName: String = ""
         var cruiseDuration: String = ""
-        cruiseViewModel.getCruiseById(context, cruiseId.toInt())?.observe(this, {
-            findViewById<TextView>(R.id.amountPay).text = it.Price.toString()
-            cruiseName = it.CruiseName
-            cruiseDuration = it.Duration.toString()
-        })
+        var price: String = ""
+
+        if (userId != null) {
+            Cruise(userId).getCruiseById(userId).addOnSuccessListener {
+//                Log.e("zz", it.child("cruiseName").value.toString())
+                cruiseCode = it.child("cruiseCode").value.toString()
+                cruiseName = it.child("cruiseName").value.toString()
+                cruiseDuration = it.child("duration").value.toString()
+                price = it.child("price").value.toString()
+                findViewById<TextView>(R.id.amountPay).setText(price)
+            }
+        }
 
         val btnSub = findViewById<Button>(R.id.guestsSubmit)
         btnSub.setOnClickListener{
-            val numberOfAdults = findViewById<Spinner>(R.id.adults_spinner).selectedView as TextView
-            val numberOfChildren = findViewById<Spinner>(R.id.children_spinner).selectedView as TextView
-            val numberOfSenior = findViewById<Spinner>(R.id.senior_spinner).selectedView as TextView
-            val startDate = findViewById<TextView>(R.id.dateDisplay).text.toString()
-
-            lifecycleScope.launch{
-                var booking_id = bookingViewModel.insertBooking(
-                    context = context,
-                    customerId = userId,
+            if (userId != null) {
+                val bookingId = Booking(userId).createBooking(
+//                    cruiseCode = cruiseCode,
                     cruiseCode = cruiseName + " / " + cruiseDuration + " days",
-                    numberOfAdults = numberOfAdults.text.toString().toInt(),
-                    numberOfKids = numberOfChildren.text.toString().toInt(),
-                    numberOfSeniors = numberOfSenior.text.toString().toInt(),
-                    amoutPaid = findViewById<TextView>(R.id.amountPay).text.toString().toDouble(),
-                    startDate = startDate,
-                    )
-
-                sharedPreferences.edit().putLong(
-                    "booking_id", booking_id
-                ).apply()
-                Toast.makeText( context,"bookingId:${booking_id}", Toast.LENGTH_SHORT).show()
-                val i = Intent(this@GuestsActivity, CheckoutActivity::class.java)
-                startActivity(i)
+                    numberOfAdults = (findViewById<Spinner>(R.id.adults_spinner).selectedView as TextView).text.toString().toInt(),
+                    numberOfKids = (findViewById<Spinner>(R.id.children_spinner).selectedView as TextView).text.toString().toInt(),
+                    numberOfSeniors = (findViewById<Spinner>(R.id.senior_spinner).selectedView as TextView).text.toString().toInt(),
+                    amountPaid = price,
+                    startDate = findViewById<TextView>(R.id.dateDisplay).text.toString()
+                )
+                sharedPreferences.edit().putString("booking_id", bookingId).apply()
             }
-
+            val i = Intent(this@GuestsActivity, CheckoutActivity::class.java)
+            startActivity(i)
         }
     }
 

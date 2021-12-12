@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
+import com.example.group7_mapd711_assignment4.firebase.Booking
 
 class BookingInformationActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -33,7 +34,8 @@ class BookingInformationActivity : AppCompatActivity() {
         context = this@BookingInformationActivity
         bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
 
-        val booking_id_selected = sharedPreferences.getInt("booking_id_selected", 0)
+        val booking_id_selected = sharedPreferences.getString("booking_id_selected", "0")
+        val userId = sharedPreferences.getString("user_id_firebase", "0")
 
         val tvCruiseCode = findViewById<TextView>(R.id.tvCruiseCode)
         val tvNoOfAdults = findViewById<TextView>(R.id.tvNoOfAdults)
@@ -42,16 +44,16 @@ class BookingInformationActivity : AppCompatActivity() {
         val tvAmountPaid = findViewById<TextView>(R.id.tvAmountPaid)
         val tvStartDate = findViewById<TextView>(R.id.tvStartDate)
 
-        bookingViewModel.getBookingById(context, booking_id_selected)!!.observe(this, Observer {
-            if (it != null) {
-                tvCruiseCode.setText(it.CruiseCode)
-                tvNoOfAdults.setText(it.NumberOfAdults.toString())
-                tvNoOfKids.setText(it.NumberOfKids.toString())
-                tvNoOfSeniors.setText(it.NumberOfSeniors.toString())
-                tvAmountPaid.setText(it.AmountPaid.toString())
-                tvStartDate.setText(it.StartDate)
+        if (userId != null && booking_id_selected != null) {
+            Booking(userId).getBookingByUidAndBid(userId, booking_id_selected).addOnSuccessListener{
+                tvCruiseCode.setText(it.child("cruiseCode").value.toString())
+                tvNoOfAdults.setText(it.child("numberOfAdults").value.toString())
+                tvNoOfKids.setText(it.child("numberOfKids").value.toString())
+                tvNoOfSeniors.setText(it.child("numberOfSeniors").value.toString())
+                tvAmountPaid.setText(it.child("amountPaid").value.toString())
+                tvStartDate.setText(it.child("startDate").value.toString())
             }
-        })
+        }
 
         // Update booking information
         val btnUpdate: Button = findViewById<View>(R.id.button_update) as Button
@@ -68,8 +70,11 @@ class BookingInformationActivity : AppCompatActivity() {
                 .setPositiveButton("Yes") { dialog, id ->
                     // Delete selected note from database
                     //if(bookingId != 0) {
-                    bookingViewModel.deleteBookingById(context, booking_id_selected)
-                    Toast.makeText( context,"Cancel booking successfully!!!", Toast.LENGTH_LONG).show()
+                    if (userId != null && booking_id_selected != null) {
+                        Booking(userId).deleteByUidAndBid(userId, booking_id_selected)
+                //                    bookingViewModel.deleteBookingById(context, booking_id_selected)
+                        Toast.makeText( context,"Cancel booking successfully!!!", Toast.LENGTH_LONG).show()
+                    }
                     val i = Intent(this@BookingInformationActivity, BookingListActivity::class.java)
                     startActivity(i);
                     //}

@@ -11,18 +11,17 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.ViewModelProvider
-import com.example.group7_mapd711_assignment4.Booking.BookingModel
-import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
-import com.example.group7_mapd711_assignment4.Cruise.CruiseViewModel
+import com.example.group7_mapd711_assignment4.firebase.Booking
 
 class BookingListActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var bookingViewModel: BookingViewModel
     lateinit var context: Context
+    var list = emptyArray<String>()
+    var idList = emptyArray<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +29,35 @@ class BookingListActivity : AppCompatActivity() {
 
         context = this@BookingListActivity
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
-        val userId = sharedPreferences.getInt("user_id", 0)
-        bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
-        val bookingList: Array<BookingModel>? = bookingViewModel.getBookingsByUserId(context, userId)
+        val userId = sharedPreferences.getString("user_id_firebase", "0")
 
-        var list = emptyArray<String>()
-        if (bookingList != null && bookingList.isNotEmpty()) {
-            for (i in bookingList) {
-                list += ("BookingId: " + i.BookingId.toString() + " Cruise: " + i.CruiseCode)
+        if (userId != null) {
+            Booking(userId).getBookingByUid(userId).addOnSuccessListener{
+                if (it.children.count() <= 0) {
+                    val tvBookingMsg = findViewById<TextView>(R.id.tvBookingMsg)
+                    tvBookingMsg.setText("There is no booking found.")
+                } else {
+                    for (b in it.children) {
+                        list += ("BookingId: " + b.child("id").value.toString() + "\nCruise: " + b.child("cruiseCode").value.toString())
+                        idList += b.child("id").value.toString()
+                    }
+                }
+                showList(list)
             }
-        } else {
-            val tvBookingMsg = findViewById<TextView>(R.id.tvBookingMsg)
-            tvBookingMsg.setText("There is no booking found.")
         }
+
+
+
+
+        val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
+        btnBackHome.setOnClickListener{
+            val i = Intent(this@BookingListActivity, HomeActivity::class.java)
+            startActivity(i);
+        }
+
+    }
+
+    fun showList(list: Array<String>){
         val listView = findViewById<ListView>(R.id.bookings_list_view)
 
         listView.adapter = ArrayAdapter(this,
@@ -52,25 +67,16 @@ class BookingListActivity : AppCompatActivity() {
 
             override fun onItemClick(parent: AdapterView<*>, view: View,
                                      position: Int, id: Long) {
-                val itemValue = listView.getItemAtPosition(position) as String
+//                val itemValue = listView.getItemAtPosition(position) as String
 
-                sharedPreferences.edit().putInt(
-                    "booking_id_selected", itemValue.substringAfter("BookingId: ").substringBefore("Cruise:").trim().toInt()
+                sharedPreferences.edit().putString(
+//                    "booking_id_selected", itemValue.substringAfter("BookingId: ").substringBefore("Cruise:").trim()
+                    "booking_id_selected", idList[position]
                 ).apply()
 
                 val i = Intent(this@BookingListActivity, BookingInformationActivity::class.java)
                 startActivity(i);
-//                Toast.makeText(applicationContext,
-//                    "Position :$position\nItem Value : $z", Toast.LENGTH_LONG)
-//                    .show()
             }
         }
-
-        val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
-        btnBackHome.setOnClickListener{
-            val i = Intent(this@BookingListActivity, HomeActivity::class.java)
-            startActivity(i);
-        }
-
     }
 }

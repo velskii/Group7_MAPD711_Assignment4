@@ -15,54 +15,37 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.example.group7_mapd711_assignment4.Booking.BookingViewModel
-import com.example.group7_mapd711_assignment4.Cruise.CruiseViewModel
-import java.util.Observer
+import com.example.group7_mapd711_assignment4.firebase.Booking
+import com.example.group7_mapd711_assignment4.firebase.Cruise
 
 class CheckoutActivity : AppCompatActivity() {
 
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var cruiseViewModel : CruiseViewModel
-    lateinit var bookingViewModel : BookingViewModel
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        cruiseViewModel = ViewModelProvider(this).get(CruiseViewModel::class.java)
-        bookingViewModel = ViewModelProvider(this).get(BookingViewModel::class.java)
         sharedPreferences = this.getSharedPreferences("com.example.Group7_MAPD711_Assignment4", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getString("user_id_firebase", "0")
+        val bookingId = sharedPreferences.getString("booking_id", "0")
 
-        val cruiseId = sharedPreferences.getLong("cruise_id", 0)
-        cruiseViewModel.getCruiseById(this@CheckoutActivity, cruiseId.toInt())?.observe(this, {
-            val code = it.CruiseCode
-            val cruiseName = it.CruiseName
-            val duration = it.Duration
-            val price = it.Price
-            val visitingPlaces = it.VisitingPlaces
-
-            findViewById<TextView>(R.id.cruise_type_checked).text = cruiseName
-            findViewById<TextView>(R.id.price_stored).text = price.toString()
-            findViewById<TextView>(R.id.visiting_places_stored).text = visitingPlaces
-            findViewById<TextView>(R.id.duration_stored).text = duration.toString()
-
-        })
-
-        val booking_id = sharedPreferences.getLong("booking_id", 0)
-
-        bookingViewModel.getBookingById(this@CheckoutActivity, booking_id.toInt())?.observe(this, {
-
-            findViewById<TextView>(R.id.number_adults).text = "Number of adults: "+ it.NumberOfAdults.toString()
-            findViewById<TextView>(R.id.number_children).text = "Number of children: " + it.NumberOfKids.toString()
-            findViewById<TextView>(R.id.senior_guest).text = "Number of senior: " + it.NumberOfSeniors.toString()
-
-        })
-//        Toast.makeText( this@CheckoutActivity,"info:${it.CruiseCode}", Toast.LENGTH_SHORT).show()
-
-
+        if (userId != null && bookingId != null) {
+            Cruise(userId).getCruiseById(userId).addOnSuccessListener {
+                Log.e("zz", it.child("cruiseCode").value.toString())
+                findViewById<TextView>(R.id.cruise_type_checked).text = it.child("cruiseName").value.toString()
+                findViewById<TextView>(R.id.price_stored).text = it.child("price").value.toString()
+                findViewById<TextView>(R.id.visiting_places_stored).text = it.child("visitingPlaces").value.toString()
+                findViewById<TextView>(R.id.duration_stored).text = it.child("duration").value.toString()
+            }
+            Booking(userId).getBookingByUidAndBid(userId, bookingId).addOnSuccessListener {
+                Log.e("zz", it.child("startDate").value.toString())
+                findViewById<TextView>(R.id.number_adults).text = "Number of adults: "+ it.child("numberOfAdults").value.toString()
+                findViewById<TextView>(R.id.number_children).text = "Number of children: " + it.child("numberOfKids").value.toString()
+                findViewById<TextView>(R.id.senior_guest).text = "Number of senior: " + it.child("numberOfSeniors").value.toString()
+            }
+        }
     }
 
     fun payOptions(v:View){

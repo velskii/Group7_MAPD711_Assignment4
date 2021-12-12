@@ -14,11 +14,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.group7_mapd711_assignment4.User.UserViewModel
+import com.google.firebase.ktx.Firebase
+import android.util.Log
+import com.example.group7_mapd711_assignment4.firebase.User
+import com.google.firebase.auth.ktx.auth
 
 class UpdateUserActivity : AppCompatActivity() {
 
@@ -34,13 +36,11 @@ class UpdateUserActivity : AppCompatActivity() {
         context = this@UpdateUserActivity
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        val userId = sharedPreferences.getInt("user_id", 0)
         val username = sharedPreferences.getString("username", "no name")
         val password = sharedPreferences.getString("password", "no psw")
 
         findViewById<EditText>(R.id.username_update).setText(username)
         findViewById<EditText>(R.id.password_update).setText(password)
-//        findViewById<EditText>(R.id.userId).text = userId.toString()
 
         val editFirstname = findViewById<EditText>(R.id.firstname_update)
         val editLastname = findViewById<EditText>(R.id.lastname_update)
@@ -49,17 +49,25 @@ class UpdateUserActivity : AppCompatActivity() {
         val editPostalcode = findViewById<EditText>(R.id.postal_code_update)
         val editTelephone = findViewById<EditText>(R.id.telephone_update)
         val editEmail = findViewById<EditText>(R.id.email_update)
-        userViewModel.getUsersById(context, userId)!!.observe(this, Observer {
-            if (it != null) {
-                editFirstname.setText(it.firstname)
-                editLastname.setText(it.lastname)
-                editAddress.setText(it.address)
-                editCity.setText(it.city)
-                editPostalcode.setText(it.postalcode)
-                editTelephone.setText(it.telephone)
-                editEmail.setText(it.email)
+
+        val userData = Firebase.auth.currentUser
+        userData?.let {
+            // Name, email address, and profile photo Url
+            val name = userData.displayName
+            val email = userData.email
+            val uid = userData.uid
+
+            User(uid).getUserByUid(uid).addOnSuccessListener {
+//            userTable.child(uid).get().addOnSuccessListener {
+                editFirstname.setText(it.child("firstname").value.toString())
+                editLastname.setText(it.child("lastname").value.toString())
+                editAddress.setText(it.child("address").value.toString())
+                editCity.setText(it.child("city").value.toString())
+                editPostalcode.setText(it.child("postalcode").value.toString())
+                editTelephone.setText(it.child("telephone").value.toString())
+                editEmail.setText(it.child("email").value.toString())
             }
-        })
+        }
 
         val btnUpdate: Button = findViewById<View>(R.id.btnUpdate) as Button
         btnUpdate.setOnClickListener{
@@ -72,19 +80,16 @@ class UpdateUserActivity : AppCompatActivity() {
             val email = editEmail.text.toString()
 
             if ((username != null) && (password != null)) {
-                userViewModel.updateUser(context = context, id = userId, username = username, password = password, firstname = firstname, lastname = lastname, address = address, city = city, postalcode = postalcode, telephone = telephone, email = email )
-
+                userData?.let {
+//                    val name = userData.displayName
+//                    val email = userData.email
+                    val uid = userData.uid
+                    if (email != null) {
+                        User(uid).writeNewUser(username, password, firstname, lastname, address, city, postalcode, telephone, email)
+                    }
+                }
                 val i = Intent(this@UpdateUserActivity, UserInformationActivity::class.java)
                 startActivity(i);
-//                userViewModel.getUsersById(context, userId)!!.observe(this, Observer {
-//
-//                    if (it != null) {
-//                        Toast.makeText(context, "${it.firstname}", Toast.LENGTH_LONG).show()
-//                        val i = Intent(this@UpdateUserActivity, UserInformationActivity::class.java)
-//                        startActivity(i);
-//                    }
-//                })
-
             } else {
                 Toast.makeText( context,"Please fill in the empty fields.", Toast.LENGTH_LONG).show()
             }

@@ -20,7 +20,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.group7_mapd711_assignment4.Cruise.CruiseViewModel
 import com.example.group7_mapd711_assignment4.Fragments.*
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
+import com.example.group7_mapd711_assignment4.firebase.Cruise
+import com.example.group7_mapd711_assignment4.firebase.User
 
 class CruiseTypesActivity : AppCompatActivity() {
 
@@ -49,20 +54,22 @@ class CruiseTypesActivity : AppCompatActivity() {
             var visiting_places : String = findViewById<TextView>(R.id.visiting_places).text.toString()
             var duration : String = findViewById<TextView>(R.id.duration).text.toString()
 
-            lifecycleScope.launch {
-                val cruiseId = cruiseViewModel.insertCruise(
-                    context,
-                    cruiseCode = "CODE_${cruiseTypeChecked}",
+            val userData = Firebase.auth.currentUser
+            userData?.let {
+                val uid = userData.uid
+                val cruiseId = Cruise(uid).updateCruise(
+//                    cruiseCode = "CODE_${cruiseTypeChecked}",
+                    cruiseCode = cruiseTypeChecked + " / " + duration + " days",
                     cruiseName = cruiseTypeChecked,
                     visitingPlaces = visiting_places,
-                    price = price.toDouble(),
-                    duration = duration.toInt(),
+                    price = price,
+                    duration = duration,
                 )
-                sharedPreferences.edit().putLong(
+                sharedPreferences.edit().putString(
                     "cruise_id", cruiseId
                 ).apply()
             }
-//            Toast.makeText(this,"name:${cruiseTypeChecked},visiting_places:${visiting_places},duration:${price},price:${price},",Toast.LENGTH_LONG).show()
+
             val i = Intent(this@CruiseTypesActivity, GuestsActivity::class.java)
             startActivity(i)
         } else {
