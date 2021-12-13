@@ -46,5 +46,17 @@
             android:textSize="@dimen/buttonFontSize"
             android:text="Home"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/music_fragment"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal">
+        <fragment
+            android:id="@+id/music"
+            android:name="com.example.group7_mapd711_assignment4.Fragments.MusicFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>

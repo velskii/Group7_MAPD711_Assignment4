@@ -38,6 +38,11 @@ class CruiseTypesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cruise_types)
 
+        val btnBackHome: Button = findViewById<View>(R.id.btnBackHome) as Button
+        btnBackHome.setOnClickListener{
+            val i = Intent(this@CruiseTypesActivity, HomeActivity::class.java)
+            startActivity(i);
+        }
     }
 
     fun cruiseTypeChecked(v:View) {

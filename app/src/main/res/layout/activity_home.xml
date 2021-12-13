@@ -59,77 +59,100 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/buttonFontSize" />
+<!--        <Button-->
+<!--            android:id="@+id/second"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Second Fragment"-->
+<!--            android:onClick="Fragment_Selection"/>-->
+
     </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center">-->
+<!--        <Button-->
+<!--            android:id="@+id/btnPlayMusic"-->
+<!--            android:layout_width="@dimen/optionsDim"-->
+<!--            android:layout_height="@dimen/optionsDim"-->
+<!--            android:background="@drawable/background_btn_play"-->
+<!--            android:contentDescription="@string/cd_play_icon"-->
+<!--            android:enabled="true"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--           />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnStopMusic"-->
+<!--            android:layout_width="@dimen/optionsDim"-->
+<!--            android:layout_height="@dimen/optionsDim"-->
+<!--            android:layout_marginStart="@dimen/margin"-->
+<!--            android:background="@drawable/background_btn_stop"-->
+<!--            android:contentDescription="@string/cd_stop_icon"-->
+<!--            android:enabled="false"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btnShuffleMusic"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnShuffleMusic"-->
+<!--            android:layout_width="@dimen/optionsDim"-->
+<!--            android:layout_height="@dimen/optionsDim"-->
+<!--            android:layout_marginStart="@dimen/margin"-->
+<!--            android:background="@drawable/background_btn_shuffle"-->
+<!--            android:contentDescription="@string/cd_stop_icon"-->
+<!--            android:enabled="false"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/btnStopMusic"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--             />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center">-->
+<!--        <Button-->
+<!--            android:id="@+id/btnSongName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/margin"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:padding="@dimen/padding"-->
+<!--            android:text="@string/song_name"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/violet"-->
+<!--            android:textSize="@dimen/smallTextSize"-->
+<!--            android:textStyle="bold"-->
+<!--            android:visibility="invisible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--             />-->
+<!--    </LinearLayout>-->
+
+
 
     <LinearLayout
-        android:layout_marginTop="100dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnPlayMusic"
-            android:layout_width="@dimen/optionsDim"
-            android:layout_height="@dimen/optionsDim"
-            android:background="@drawable/background_btn_play"
-            android:contentDescription="@string/cd_play_icon"
-            android:enabled="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-           />
-
-        <Button
-            android:id="@+id/btnStopMusic"
-            android:layout_width="@dimen/optionsDim"
-            android:layout_height="@dimen/optionsDim"
-            android:layout_marginStart="@dimen/margin"
-            android:background="@drawable/background_btn_stop"
-            android:contentDescription="@string/cd_stop_icon"
-            android:enabled="false"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnShuffleMusic"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <Button
-            android:id="@+id/btnShuffleMusic"
-            android:layout_width="@dimen/optionsDim"
-            android:layout_height="@dimen/optionsDim"
-            android:layout_marginStart="@dimen/margin"
-            android:background="@drawable/background_btn_shuffle"
-            android:contentDescription="@string/cd_stop_icon"
-            android:enabled="false"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnStopMusic"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+        android:id="@+id/music_fragment"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal">
+        <fragment
+            android:id="@+id/music"
+            android:name="com.example.group7_mapd711_assignment4.Fragments.MusicFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <Button
-            android:id="@+id/btnSongName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
-            android:background="@android:color/transparent"
-            android:padding="@dimen/padding"
-            android:text="@string/song_name"
-            android:textAlignment="center"
-            android:textColor="@color/violet"
-            android:textSize="@dimen/smallTextSize"
-            android:textStyle="bold"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-             />
-    </LinearLayout>
 
 </LinearLayout>
