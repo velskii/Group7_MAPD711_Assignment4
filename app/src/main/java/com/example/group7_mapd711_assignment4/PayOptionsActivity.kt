@@ -138,7 +138,7 @@ class PayOptionsActivity : AppCompatActivity() {
                 }
             } else {
                 val cashNumber = findViewById<EditText>(R.id.edit_text_cash_card)
-                if (cashNumber.text.toString().toInt() < 100) {
+                if (cashNumber.text.toString() == "" || cashNumber.text.toString().toInt() < 100) {
                     Toast.makeText(
                         this@PayOptionsActivity,
                         "Cash must be more than 100",
@@ -148,6 +148,12 @@ class PayOptionsActivity : AppCompatActivity() {
                 }
                 this.showDialog()
             }
+        } else {
+            Toast.makeText(
+                this@PayOptionsActivity,
+                "Please choose one payment method",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 

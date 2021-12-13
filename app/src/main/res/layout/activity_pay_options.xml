@@ -49,7 +49,7 @@
                 android:layout_marginLeft="100px"
                 android:paddingTop="5px"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="numberDecimal" />
 
             <RadioButton
                 android:id="@+id/rdb_credit_card"
